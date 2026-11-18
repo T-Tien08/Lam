@@ -1,0 +1,2717 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#515e2c">
+  <title>LAM | Gốm Việt đương đại</title>
+  <meta name="description" content="LAM - Gốm Việt đương đại. Bộ sưu tập Sen Việt, di sản trong từng bữa ăn.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600&family=Cormorant+Garamond:wght@400;500;600&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --ink: #57412f;
+      --ink2: #6f5845;
+      --brown: #453225;
+      --cream: #f1e3d4;
+      --cream2: #e7d3be;
+      --cream3: #e1c9b1;
+      --paper: #f7eee3;
+      --line: #d9c6b2;
+      --muted: #907963;
+      --white: #fff9f0;
+      --serif: 'Cormorant Garamond', Georgia, serif;
+      --sans: 'Be Vietnam Pro', Arial, sans-serif
+    }
+
+    * {
+      box-sizing: border-box
+    }
+
+    html {
+      scroll-behavior: smooth
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--cream);
+      font-family: var(--sans);
+      font-size: 13px
+    }
+
+    button,
+    input,
+    select,
+    textarea {
+      font: inherit
+    }
+
+    button {
+      cursor: pointer
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none
+    }
+
+    img {
+      max-width: 100%
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    p {
+      margin-top: 0
+    }
+
+    h1,
+    h2,
+    h3,
+    h4 {
+      font-family: var(--serif);
+      font-weight: 500
+    }
+
+    h1 {
+      font-size: clamp(55px, 6vw, 92px);
+      line-height: .92;
+      letter-spacing: -.025em
+    }
+
+    h2 {
+      font-size: clamp(42px, 4.6vw, 66px);
+      line-height: .94;
+      letter-spacing: -.018em
+    }
+
+    h3 {
+      font-size: 34px
+    }
+
+    .muted {
+      color: var(--muted)
+    }
+
+    .kicker {
+      font-family: var(--sans);
+      font-size: 11px;
+      letter-spacing: .12em;
+      font-weight: 500
+    }
+
+    .container {
+      max-width: 1420px;
+      margin: 0 auto;
+      padding: 0 5.5%
+    }
+
+    .page {
+      display: none;
+      min-height: 55vh
+    }
+
+    .page.active {
+      display: block
+    }
+
+    .hide {
+      display: none !important
+    }
+
+    /* Header overlays hero, as in reference */
+    header {
+      position: absolute;
+      z-index: 45;
+      left: 0;
+      right: 0;
+      top: 0;
+      color: var(--white)
+    }
+
+    .headerInner {
+      height: 83px;
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      padding: 0 5.5%;
+      max-width: 1600px;
+      margin: auto
+    }
+
+    .brand {
+      font-family: var(--serif);
+      font-size: 42px;
+      line-height: 1;
+      font-weight: 600;
+      letter-spacing: -.04em;
+      color: #5d4938;
+      text-shadow: 0 1px 10px #f6e8d533;
+      cursor: pointer;
+      width: max-content
+    }
+
+    .brand span {
+      font-size: 35px
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 34px
+    }
+
+    .nav button,
+    .headerActions button {
+      background: none;
+      border: 0;
+      color: inherit;
+      font-family: var(--serif);
+      font-size: 17px;
+      white-space: nowrap
+    }
+
+    .nav button:hover,
+    .headerActions button:hover {
+      opacity: .7
+    }
+
+    .headerActions {
+      justify-self: end;
+      display: flex;
+      align-items: center;
+      gap: 16px
+    }
+
+    .iconButton {
+      width: 30px;
+      height: 35px;
+      display: grid;
+      place-items: center;
+      position: relative
+    }
+
+    .iconButton svg {
+      width: 19px;
+      height: 19px;
+      stroke: currentColor;
+      stroke-width: 1.5;
+      fill: none
+    }
+
+    .badgeCount {
+      position: absolute;
+      right: -6px;
+      top: -1px;
+      font: 10px var(--sans);
+      background: #6c4d36;
+      color: white;
+      min-width: 16px;
+      height: 16px;
+      border-radius: 100px;
+      display: grid;
+      place-items: center;
+      padding: 0 3px
+    }
+
+    .menuToggle {
+      display: none !important
+    }
+
+    .mobileMenu {
+      display: none
+    }
+
+    .stickyHeader header,
+    body:has(.page.active:not(#home)) header {
+      position: sticky;
+      background: #f2e5d7;
+      color: var(--ink);
+      border-bottom: 1px solid #dcc7b2
+    }
+
+    .stickyHeader .brand,
+    body:has(.page.active:not(#home)) .brand {
+      color: var(--ink)
+    }
+
+    .stickyHeader .headerInner,
+    body:has(.page.active:not(#home)) .headerInner {
+      height: 76px
+    }
+
+    /* Image placeholders: no missing-image icons and no external dependencies */
+    .imageSlot {
+      position: relative;
+      overflow: hidden
+    }
+
+    .imageSlot>img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: none
+    }
+
+    .imageSlot.hasImage>img {
+      display: block
+    }
+
+    .imageSlot .imageFallback {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 10px;
+      text-align: center;
+      color: #9d866f;
+      pointer-events: none
+    }
+
+    .imageSlot.hasImage .imageFallback {
+      display: none
+    }
+
+    .imageFallback svg {
+      width: 27px;
+      height: 27px;
+      opacity: .58;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 1.4
+    }
+
+    .imageFallback strong {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: .035em
+    }
+
+    .imageFallback small {
+      font-size: 10px;
+      opacity: .83;
+      line-height: 1.55
+    }
+
+    .imageSlot .uploadHit {
+      display: none;
+      position: absolute;
+      inset: 0;
+      z-index: 4;
+      border: 2px dashed #80634899;
+      background: #fffaef24;
+      color: transparent
+    }
+
+    .editing .imageSlot .uploadHit {
+      display: block
+    }
+
+    .editing .imageSlot .uploadHit:hover {
+      background: #fff5e466;
+      border-color: #664b34
+    }
+
+    .editing .imageSlot:after {
+      content: 'Thay ảnh +';
+      position: absolute;
+      z-index: 3;
+      bottom: 10px;
+      right: 10px;
+      padding: 7px 10px;
+      background: #4c3729d9;
+      color: white;
+      font: 11px var(--sans);
+      border-radius: 2px;
+      pointer-events: none
+    }
+
+    .editing .imageSlot {
+      outline: 1px dashed #aa8e73
+    }
+
+    /* Hero */
+    .hero {
+      position: relative;
+      height: clamp(480px, 40vw, 650px);
+      background: linear-gradient(105deg, #c7b097 0%, #d4bfa7 42%, #c7b49f 100%);
+      overflow: hidden
+    }
+
+    .heroPhoto {
+      position: absolute;
+      inset: 0
+    }
+
+    .heroPhoto>img {
+      object-fit: cover
+    }
+
+    .heroPhoto .imageFallback {
+      left: 47%;
+      background: linear-gradient(135deg, #d3bca3 0%, #c2a78e 100%);
+      border-left: 1px solid #f8e9d03d
+    }
+
+    .heroPhoto:after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, #c8b197e8 0%, #cbb49bb5 34%, #c7b09605 70%);
+      pointer-events: none
+    }
+
+    .heroPhoto.hasImage:after {
+      background: linear-gradient(90deg, #d2bda3b5 0%, #d2bda370 33%, transparent 63%)
+    }
+
+    .heroText {
+      position: absolute;
+      z-index: 3;
+      left: 5.7%;
+      top: 31%;
+      width: 51%;
+      max-width: 740px
+    }
+
+    .heroText h1 {
+      font-size: clamp(52px, 5.2vw, 81px);
+      margin-bottom: 17px;
+      color: #5c4835
+    }
+
+    .heroText p {
+      font-family: var(--serif);
+      font-size: clamp(18px, 1.8vw, 26px);
+      line-height: 1.16;
+      color: #68523e;
+      margin-bottom: 30px
+    }
+
+    .pill {
+      background: #5c4733;
+      border: 1px solid #5c4733;
+      color: #f8eee1;
+      border-radius: 100px;
+      padding: 12px 22px;
+      font-family: var(--serif);
+      font-size: 16px;
+      display: inline-flex;
+      gap: 18px;
+      align-items: center;
+      transition: .2s
+    }
+
+    .pill:hover {
+      background: #3d2b1f
+    }
+
+    .pill.outline {
+      background: transparent;
+      color: var(--brown)
+    }
+
+    /* Collection intro, lotus banner and cut-out product lineup */
+    .collectionHome {
+      position: relative;
+      background: radial-gradient(ellipse at 6% 93%, #d4b89b9e, transparent 44%), linear-gradient(160deg, #f0dfcd 0%, #ecd7c1 65%, #e4cbb4 100%);
+      padding: 27px 5.7% 72px;
+      overflow: hidden
+    }
+
+    .collectionTop {
+      display: grid;
+      grid-template-columns: 40% 60%;
+      gap: 18px;
+      align-items: center;
+      min-height: 205px
+    }
+
+    .collectionTitle h2 {
+      font-size: clamp(53px, 5.4vw, 82px);
+      margin: 7px 0 9px
+    }
+
+    .collectionTitle h2:after {
+      content: '';
+      display: inline-block;
+      width: 85px;
+      height: 1px;
+      background: #91755c;
+      vertical-align: middle;
+      margin-left: 19px
+    }
+
+    .collectionTitle p {
+      font-family: var(--serif);
+      font-size: 21px;
+      line-height: 1.15;
+      max-width: 420px;
+      color: #705841;
+      margin-bottom: 22px
+    }
+
+    .textLink {
+      border: 0;
+      background: none;
+      color: #664b34;
+      font: 19px var(--serif);
+      padding: 0;
+      display: inline-flex;
+      gap: 13px;
+      align-items: center
+    }
+
+    .textLink:hover {
+      text-decoration: underline;
+      text-underline-offset: 4px
+    }
+
+    .lotusBanner {
+      height: 190px;
+      border-radius: 36px 0 0 36px;
+      background: linear-gradient(130deg, #b3a089, #c4b096);
+    }
+
+    .lotusBanner>img {
+      object-fit: cover
+    }
+
+    .lotusBanner .imageFallback {
+      background: linear-gradient(105deg, #b4a089, #d0bca5 58%, #a78f79);
+      color: #f4e6d3
+    }
+
+    .lotusBanner .imageFallback svg {
+      width: 38px;
+      height: 38px
+    }
+
+    .lotusBanner .imageFallback strong {
+      font-family: var(--serif);
+      font-size: 19px
+    }
+
+    .productLine {
+      display: grid;
+      gap: 9px 14px;
+      position: relative;
+      z-index: 2
+    }
+
+    .productLine.four {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      margin: 4px auto 12px;
+      max-width: 1120px
+    }
+
+    .productLine.five {
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      margin-top: 8px
+    }
+
+    .cutProduct {
+      text-align: center;
+      min-width: 0;
+      cursor: pointer
+    }
+
+    .cutProduct:hover .productImage {
+      transform: translateY(-6px)
+    }
+
+    .productImage {
+      height: clamp(120px, 15vw, 204px);
+      transition: transform .25s
+    }
+
+    .productImage>img {
+      object-fit: contain;
+      filter: drop-shadow(0 9px 6px #81684e25)
+    }
+
+    .productImage .imageFallback {
+      inset: 11% 14% 3%;
+      border: 1px dashed #a58a7052;
+      border-radius: 45%;
+      background: #f9ead72b
+    }
+
+    .cutProduct .productName {
+      font-family: var(--serif);
+      font-size: 17px;
+      line-height: 1.1;
+      margin-top: 3px
+    }
+
+    .cutProduct .productSpec {
+      font-family: var(--serif);
+      font-size: 14px;
+      line-height: 1.2;
+      color: #866a52;
+      margin-top: 3px
+    }
+
+    .collectionOrnament {
+      position: absolute;
+      left: -70px;
+      bottom: -35px;
+      width: 270px;
+      height: 270px;
+      opacity: .14;
+      pointer-events: none
+    }
+
+    .collectionOrnament svg {
+      width: 100%;
+      height: 100%;
+      stroke: #7e593e;
+      stroke-width: 2;
+      fill: none
+    }
+
+    /* Discovery area */
+    .discover {
+      background: linear-gradient(110deg, #ead2ba, #eedcc9);
+      display: grid;
+      grid-template-columns: 23% 77%;
+      gap: 15px;
+      padding: 36px 5.7% 60px
+    }
+
+    .discoverIntro h2 {
+      font-size: clamp(44px, 4vw, 61px);
+      line-height: .98;
+      margin: 10px 0 16px
+    }
+
+    .discoverCards {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 13px;
+      padding-right: 14px
+    }
+
+    .discoverCard {
+      background: #f7e9d9;
+      border-radius: 14px;
+      padding: 6px 6px 12px;
+      cursor: pointer;
+      min-width: 0;
+      transition: transform .2s
+    }
+
+    .discoverCard:hover {
+      transform: translateY(-5px)
+    }
+
+    .discoverImage {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 3 / 2;
+    border-radius: 10px;
+    overflow: hidden;
+    background: #d9c1a8;
+}
+
+.discoverImage > img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    padding: 0;
+    filter: none;
+}
+
+    .discoverImage .imageFallback {
+      background: #e1c9b06b
+    }
+
+    .discoverCard .cardTitle {
+      font-family: var(--serif);
+      font-size: 20px;
+      padding: 9px 4px 0;
+      line-height: 1.1
+    }
+
+    .discoverCard .cardSpec {
+      font-size: 10px;
+      color: #947c65;
+      padding: 4px 4px 0
+    }
+
+    .footerWave {
+      height: 73px;
+      background: #ead2ba;
+      overflow: hidden;
+      margin-bottom: -1px
+    }
+
+    .footerWave svg {
+      display: block;
+      width: 100%;
+      height: 100%
+    }
+
+    /* Footer */
+    footer {
+      background: #3d2b1e;
+      color: #e9d2b6;
+      padding: 29px 5.7% 23px;
+      position: relative;
+      overflow: hidden
+    }
+
+    .footerGrid {
+      display: grid;
+      grid-template-columns: 2.1fr 1fr 1fr 1fr 1.3fr;
+      gap: 25px;
+      max-width: 1450px;
+      margin: auto
+    }
+
+    .footerBrand {
+      font: 58px var(--serif);
+      line-height: .8;
+      margin-bottom: 15px
+    }
+
+    .footerGrid p {
+      font-family: var(--serif);
+      font-size: 18px;
+      line-height: 1.15;
+      color: #d5bda1;
+      max-width: 280px
+    }
+
+    .footerCol h4 {
+      font: 18px var(--serif);
+      margin: 0 0 12px
+    }
+
+    .footerCol button {
+      display: block;
+      color: #d2b99b;
+      border: 0;
+      background: none;
+      padding: 2px 0;
+      font: 15px var(--serif);
+      text-align: left
+    }
+
+    .footerCol button:hover {
+      color: #fff
+    }
+
+    .footerQuote {
+      text-align: right;
+      font: 22px var(--serif);
+      line-height: 1.12;
+      align-self: center
+    }
+
+    .footerBottom {
+      max-width: 1450px;
+      margin: 30px auto 0;
+      border-top: 1px solid #856a526b;
+      padding-top: 16px;
+      display: flex;
+      justify-content: space-between;
+      gap: 15px;
+      color: #c2a78a;
+      font: 12px var(--serif)
+    }
+
+    .footerFloral {
+      position: absolute;
+      left: -60px;
+      bottom: 5px;
+      opacity: .12;
+      pointer-events: none
+    }
+
+    /* Other pages */
+    .pageTitle {
+      padding: 66px 0 24px
+    }
+
+    .pageTitle h1 {
+      font-size: clamp(55px, 6vw, 84px);
+      margin: 10px 0
+    }
+
+    .pageTitle p {
+      max-width: 700px;
+      font-family: var(--serif);
+      font-size: 22px;
+      line-height: 1.3
+    }
+
+    .shopTools {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 24px
+    }
+
+    .shopTools input,
+    .shopTools select,
+    .field input,
+    .field textarea,
+    .field select {
+      padding: 12px 13px;
+      background: #fffaf2;
+      border: 1px solid #d6bea5;
+      color: var(--ink);
+      outline: none;
+      border-radius: 0
+    }
+
+    .shopTools input {
+      flex: 1;
+      min-width: 210px
+    }
+
+    .shopGrid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 25px 18px;
+      padding-bottom: 80px
+    }
+
+    .shopCard {
+      cursor: pointer;
+      min-width: 0
+    }
+
+    .shopPhoto {
+      height: 265px;
+      background: #ead6c1;
+      position: relative
+    }
+
+    .shopPhoto .imageFallback {
+      inset: 12%;
+      border: 1px dashed #ac91785c
+    }
+
+    .shopPhoto>img {
+      object-fit: contain;
+      padding: 10px
+    }
+
+    .wishHeart {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: #f9efe5e6;
+      color: #75563e;
+      border: 0;
+      border-radius: 50%;
+      font-size: 22px;
+      width: 35px;
+      height: 35px;
+      z-index: 2
+    }
+
+    .wishHeart.saved {
+      color: #ad555a
+    }
+
+    .shopCard h3 {
+      font-size: 25px;
+      margin: 10px 0 2px
+    }
+
+    .shopCard .price {
+      margin-top: 8px;
+      font-weight: 600
+    }
+
+    .button {
+      background: var(--brown);
+      color: #fff4e7;
+      border: 1px solid var(--brown);
+      padding: 14px 21px;
+      font: 12px var(--sans);
+      letter-spacing: .05em
+    }
+
+    .button:hover {
+      background: #654b37
+    }
+
+    .button.light {
+      background: transparent;
+      color: var(--brown)
+    }
+
+    .button.light:hover {
+      background: #e7d4bf
+    }
+
+    .button.full {
+      width: 100%
+    }
+
+    .sectionSpace {
+      padding-bottom: 85px
+    }
+
+    .empty {
+      padding: 60px 15px;
+      text-align: center;
+      color: var(--muted);
+      font-family: var(--serif);
+      font-size: 22px
+    }
+
+    .infoGrid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 45px
+    }
+
+    .infoGrid p,
+    .infoGrid li {
+      font-family: var(--serif);
+      font-size: 21px;
+      line-height: 1.4
+    }
+
+    .infoGrid details {
+      border-bottom: 1px solid #d3bca5;
+      padding: 18px 0
+    }
+
+    .infoGrid summary {
+      font-size: 16px;
+      cursor: pointer
+    }
+
+    .infoGrid details p {
+      font-size: 17px
+    }
+
+    .bundlesGrid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-bottom: 60px
+    }
+
+    .bundleCard {
+      display: grid;
+      grid-template-columns: 46% 54%;
+      background: #f6e7d5
+    }
+
+    .bundlePhoto {
+      height: 285px;
+      background: #dec5ac
+    }
+
+    .bundleText {
+      padding: 22px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center
+    }
+
+    .bundleText h3 {
+      font-size: 35px;
+      margin: 10px 0
+    }
+
+    .bundleText p {
+      line-height: 1.6;
+      color: #7d654f
+    }
+
+    .oldPrice {
+      text-decoration: line-through;
+      color: #9b826a
+    }
+
+    .bundleText .price {
+      font-size: 19px;
+      font-weight: 600;
+      margin: 8px 0 15px
+    }
+
+    .builderLayout {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 310px;
+      gap: 30px;
+      padding-bottom: 80px
+    }
+
+    .tableSurface {
+      height: 530px;
+      position: relative;
+      background: repeating-linear-gradient(92deg, #e2c8a8 0 3px, #e8d0b2 4px 45px);
+      border: 14px solid #b89570;
+      overflow: hidden
+    }
+
+    .tableSurface:after {
+      content: '';
+      inset: 18px;
+      position: absolute;
+      border: 1px solid #b79770;
+      pointer-events: none
+    }
+
+    .tablePiece {
+      position: absolute;
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      background: #f8eee1a8;
+      border: 1px solid #baa48a;
+      box-shadow: 0 7px 14px #6e4b332d;
+      cursor: grab;
+      touch-action: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 2
+    }
+
+    .tablePiece img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      pointer-events: none
+    }
+
+    .tablePiece span {
+      font: 12px var(--serif);
+      text-align: center
+    }
+
+    .tablePiece button {
+      position: absolute;
+      right: -7px;
+      top: -7px;
+      border: 0;
+      background: var(--brown);
+      color: white;
+      border-radius: 50%;
+      width: 22px;
+      height: 22px;
+      z-index: 3
+    }
+
+    .builderChoices {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      max-height: 310px;
+      overflow: auto;
+      margin: 13px 0
+    }
+
+    .builderChoices button {
+      padding: 9px 6px;
+      border: 1px solid #d6bfa7;
+      background: #f9ecde;
+      color: var(--ink);
+      text-align: center;
+      font-size: 11px
+    }
+
+    .builderChoices button:hover {
+      background: #edd6bf
+    }
+
+    .builderChoices span {
+      display: block;
+      font-size: 10px;
+      color: #8b735d;
+      margin-top: 3px
+    }
+
+    .between {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px
+    }
+
+    .checkoutGrid {
+      display: grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 40px;
+      padding-bottom: 80px
+    }
+
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+      margin-bottom: 15px;
+      font-size: 12px
+    }
+
+    .field input,
+    .field textarea,
+    .field select {
+      width: 100%
+    }
+
+    .formRow {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 13px
+    }
+
+    .orderSummary {
+      background: #e5ceb6;
+      padding: 26px;
+      height: max-content
+    }
+
+    .orderSummary h3 {
+      margin: 0 0 18px
+    }
+
+    .orderSummary .between {
+      border-bottom: 1px solid #d2b69a;
+      padding: 12px 0
+    }
+
+    .orderBox {
+      background: #f6e7d7;
+      padding: 23px;
+      margin: 12px 0
+    }
+
+    .orderBox p {
+      line-height: 1.8
+    }
+
+    .showroom {
+      height: 420px;
+      background: linear-gradient(125deg, #dbc4aa, #bca18a);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 30px;
+      margin-bottom: 80px
+    }
+
+    .showroom h2 {
+      margin: 8px 0
+    }
+
+    .showroom p {
+      max-width: 460px;
+      line-height: 1.7
+    }
+
+    /* Drawer, modal, editing */
+    .scrim {
+      position: fixed;
+      inset: 0;
+      background: #2b1d12a3;
+      z-index: 70;
+      display: none
+    }
+
+    .scrim.show {
+      display: block
+    }
+
+    .drawer {
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: min(445px, 100vw);
+      height: 100dvh;
+      z-index: 72;
+      background: #fff7ed;
+      display: flex;
+      flex-direction: column;
+      transform: translateX(102%);
+      transition: transform .25s
+    }
+
+    .drawer.show {
+      transform: translateX(0)
+    }
+
+    .drawerHeader {
+      padding: 23px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #e1cbb4
+    }
+
+    .drawerHeader h3 {
+      margin: 0
+    }
+
+    .close {
+      background: none;
+      border: 0;
+      font-size: 27px;
+      color: var(--ink)
+    }
+
+    .drawerBody {
+      overflow: auto;
+      flex: 1;
+      padding: 0 23px
+    }
+
+    .drawerFoot {
+      border-top: 1px solid #e1cbb4;
+      padding: 22px
+    }
+
+    .cartItem {
+      display: grid;
+      grid-template-columns: 85px 1fr auto;
+      gap: 13px;
+      padding: 16px 0;
+      border-bottom: 1px solid #e1cbb4
+    }
+
+    .cartThumb {
+      height: 85px;
+      background: #ead6c1
+    }
+
+    .cartThumb .imageFallback small,
+    .cartThumb .imageFallback strong {
+      display: none
+    }
+
+    .cartItem h4 {
+      font: 24px var(--serif);
+      margin: 0 0 4px
+    }
+
+    .quantity {
+      display: inline-flex;
+      align-items: center;
+      border: 1px solid #d7bea5;
+      margin-top: 8px
+    }
+
+    .quantity button {
+      border: 0;
+      background: none;
+      padding: 5px 10px
+    }
+
+    .quantity span {
+      min-width: 22px;
+      text-align: center
+    }
+
+    .modal {
+      position: fixed;
+      z-index: 74;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: min(960px, 94vw);
+      max-height: 92dvh;
+      overflow: auto;
+      background: #fff6ec;
+      display: none;
+      grid-template-columns: 1fr 1fr;
+      box-shadow: 0 20px 70px #24180f66
+    }
+
+    .modal.show {
+      display: grid
+    }
+
+    .modalMedia {
+      min-height: 480px;
+      background: #e9d5bf
+    }
+
+    .modalMedia>img {
+      object-fit: contain;
+      padding: 18px
+    }
+
+    .modalInfo {
+      padding: 38px;
+      position: relative
+    }
+
+    .modalInfo .close {
+      position: absolute;
+      right: 16px;
+      top: 11px
+    }
+
+    .modalInfo h2 {
+      font-size: 58px;
+      margin: 12px 0
+    }
+
+    .modalInfo p {
+      line-height: 1.7
+    }
+
+    .modalInfo .price {
+      font-size: 21px;
+      font-weight: 600;
+      margin: 20px 0
+    }
+
+    .detailRow {
+      border-top: 1px solid #dfc8b0;
+      padding: 13px 0;
+      display: flex;
+      justify-content: space-between;
+      gap: 12px
+    }
+
+    .modalInfo .button {
+      margin-top: 10px
+    }
+
+    .toast {
+      position: fixed;
+      z-index: 110;
+      left: 50%;
+      bottom: 24px;
+      transform: translateX(-50%);
+      background: #3e2b20;
+      color: white;
+      padding: 12px 20px;
+      display: none;
+      box-shadow: 0 7px 30px #3c2a1e55;
+      text-align: center;
+      max-width: 90vw
+    }
+
+    .editToggle {
+      position: fixed;
+      right: 20px;
+      bottom: 18px;
+      z-index: 80;
+      background: #4e3929;
+      color: #fff5e7;
+      border: 0;
+      border-radius: 40px;
+      padding: 11px 15px;
+      box-shadow: 0 4px 20px #38261a50;
+      font-size: 12px
+    }
+
+    .editorBar {
+      display: none;
+      position: fixed;
+      z-index: 85;
+      bottom: 70px;
+      right: 20px;
+      background: #fff8ed;
+      border: 1px solid #cfb497;
+      padding: 16px;
+      width: min(320px, calc(100vw - 40px));
+      box-shadow: 0 10px 35px #37251945
+    }
+
+    .editorBar.show {
+      display: block
+    }
+
+    .editorBar h4 {
+      font: 27px var(--serif);
+      margin: 0 0 6px
+    }
+
+    .editorBar p {
+      line-height: 1.6;
+      color: #735b45;
+      font-size: 11px
+    }
+
+    .editorBar button {
+      margin-top: 8px;
+      width: 100%
+    }
+
+    .editorBar small {
+      font-size: 10px;
+      line-height: 1.5;
+      color: #846d55;
+      display: block;
+      margin-top: 9px
+    }
+
+    @media(max-width:1000px) {
+      .nav {
+        gap: 17px
+      }
+
+      .nav button {
+        font-size: 15px
+      }
+
+      .discover {
+        grid-template-columns: 1fr
+      }
+
+      .discoverIntro h2 br {
+        display: none
+      }
+
+      .discoverCards {
+        padding-right: 0
+      }
+
+      .productImage {
+        height: 160px
+      }
+
+      .shopGrid {
+        grid-template-columns: repeat(3, 1fr)
+      }
+
+      .footerGrid {
+        grid-template-columns: 2fr 1fr 1fr 1fr
+      }
+
+      .footerQuote {
+        display: none
+      }
+
+      .builderLayout {
+        grid-template-columns: 1fr
+      }
+    }
+
+    @media(max-width:680px) {
+      .headerInner {
+        height: 68px;
+        padding: 0 18px;
+        grid-template-columns: 1fr auto
+      }
+
+      .brand {
+        font-size: 37px
+      }
+
+      .nav {
+        display: none
+      }
+
+      .headerActions {
+        gap: 9px
+      }
+
+      .menuToggle {
+        display: grid !important
+      }
+
+      .mobileMenu.open {
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+        background: #efe0d0;
+        color: var(--ink);
+        padding: 8px 20px 15px;
+        box-shadow: 0 9px 20px #513a2933
+      }
+
+      .mobileMenu button {
+        border: 0;
+        border-bottom: 1px solid #d9c3ab;
+        background: none;
+        text-align: left;
+        padding: 11px 0;
+        color: var(--ink)
+      }
+
+      .hero {
+        height: 650px
+      }
+
+      .heroText {
+        left: 6%;
+        top: 17%;
+        width: 88%
+      }
+
+      .heroText h1 {
+        font-size: 55px
+      }
+
+      .heroText p {
+        font-size: 21px
+      }
+
+      .heroPhoto .imageFallback {
+        left: 0;
+        top: 45%;
+        border-left: 0;
+        border-top: 1px solid #f8e9d03d
+      }
+
+      .heroPhoto:after {
+        background: linear-gradient(180deg, #c8b197 0%, #cbb49b9e 40%, transparent 85%)
+      }
+
+      .heroPhoto.hasImage:after {
+        background: linear-gradient(180deg, #d2bda3dc 0%, #d2bda38c 36%, transparent 80%)
+      }
+
+      .collectionHome {
+        padding: 26px 14px 50px
+      }
+
+      .collectionTop {
+        display: block
+      }
+
+      .collectionTitle h2 {
+        font-size: 62px
+      }
+
+      .collectionTitle p {
+        font-size: 19px
+      }
+
+      .lotusBanner {
+        height: 155px;
+        border-radius: 22px;
+        margin-top: 25px
+      }
+
+      .productLine.four {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px 4px;
+        margin-top: 22px
+      }
+
+      .productLine.five {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px 4px
+      }
+
+      .productLine.five .cutProduct:last-child {
+        grid-column: 1 / -1;
+        max-width: 55%;
+        justify-self: center
+      }
+
+      .productImage {
+        height: 140px
+      }
+
+      .cutProduct .productName {
+        font-size: 18px
+      }
+
+      .discover {
+        padding: 25px 14px 50px
+      }
+
+      .discoverIntro h2 {
+        font-size: 54px
+      }
+
+      .discoverCards {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px
+      }
+
+      .discoverImage {
+        height: 165px
+      }
+
+      .footerWave {
+        height: 44px
+      }
+
+      footer {
+        padding: 27px 20px
+      }
+
+      .footerGrid {
+        grid-template-columns: 1fr 1fr;
+        gap: 25px
+      }
+
+      .footerGrid>div:first-child {
+        grid-column: 1 / -1
+      }
+
+      .footerBottom {
+        display: block
+      }
+
+      .footerBottom span {
+        display: block;
+        margin: 5px 0
+      }
+
+      .pageTitle {
+        padding: 38px 0 20px
+      }
+
+      .pageTitle h1 {
+        font-size: 60px
+      }
+
+      .shopGrid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 19px 12px
+      }
+
+      .shopPhoto {
+        height: 190px
+      }
+
+      .shopCard h3 {
+        font-size: 24px
+      }
+
+      .bundlesGrid {
+        grid-template-columns: 1fr
+      }
+
+      .bundleCard {
+        grid-template-columns: 42% 58%
+      }
+
+      .bundlePhoto {
+        height: 240px
+      }
+
+      .bundleText {
+        padding: 15px
+      }
+
+      .bundleText h3 {
+        font-size: 29px
+      }
+
+      .infoGrid,
+      .checkoutGrid,
+      .formRow {
+        grid-template-columns: 1fr
+      }
+
+      .modal {
+        grid-template-columns: 1fr
+      }
+
+      .modalMedia {
+        height: 260px;
+        min-height: 0
+      }
+
+      .modalInfo {
+        padding: 24px
+      }
+
+      .modalInfo h2 {
+        font-size: 47px
+      }
+
+      .tableSurface {
+        height: 380px;
+        border-width: 8px
+      }
+
+      .tablePiece {
+        width: 75px;
+        height: 75px
+      }
+
+      .editorBar {
+        bottom: 66px
+      }
+    }
+
+/* Kéo ảnh hoa sen tràn sát mép phải màn hình */
+.collectionHome .lotusBanner {
+    width: calc(100% + 5.7vw);
+    margin-right: -5.7vw;
+    border-radius: 36px 0 0 36px;
+}
+
+/* Hiển thị trên điện thoại */
+@media (max-width: 680px) {
+    .collectionHome .lotusBanner {
+        width: calc(100% + 14px);
+        margin-right: -14px;
+        border-radius: 22px 0 0 22px;
+    }
+}
+
+/* Điều chỉnh vị trí logo cuối trang */
+@media (min-width: 681px) {
+    .footerBrand img {
+        transform: translate(-100px, -40px);
+    }
+}
+
+/* Căn chữ giới thiệu thẳng mép trái logo */
+@media (min-width: 681px) {
+    .footerGrid > div:first-child > p {
+        margin-left: -30px;
+       transform: translateY(-60px);
+    }
+}
+
+/* Câu slogan cuối trang */
+.footerQuote {
+    text-align: right;
+}
+
+.footerQuote .quoteTitle {
+    display: block;
+    font-size: 32px;
+    line-height: 1.3;
+}
+
+.footerQuote .quoteText {
+    display: block;
+    font-size: 20px;
+    white-space: nowrap;
+    line-height: 1.4;
+}
+
+/* Chỉnh logo đầu trang trên tất cả các trang */
+.brand img {
+    width: 140px !important;
+    max-height: 65px !important;
+    height: auto !important;
+    object-fit: contain;
+    display: block;
+    transform: translate(-30px, 0px) !important;
+}
+
+
+    /* === LAM: hai combo trên trang chủ === */
+    .homeBundles {
+      padding: 74px 5.7% 86px;
+      background: #f3e5d5;
+    }
+    .homeBundlesIntro {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 40px;
+      margin-bottom: 32px;
+    }
+    .homeBundlesIntro h2 {font-size: clamp(44px, 4.5vw, 69px); margin: 13px 0 0;}
+    .homeBundlesIntro > p {font-family: var(--serif); font-size: 22px; line-height: 1.28; max-width: 375px; color: #785e48; margin-bottom: 6px;}
+    .homeBundlesGrid {display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 24px;}
+    .homeBundleCard {min-width: 0; background: #f9eee1; cursor: pointer; border: 1px solid #e2cbb5; transition: transform .25s, box-shadow .25s;}
+    .homeBundleCard:hover {transform: translateY(-5px); box-shadow: 0 15px 32px #7753391a;}
+    .homeBundleCard:focus-visible {outline: 3px solid #6c4e37; outline-offset: 3px;}
+    .homeBundlePhoto {height: clamp(235px, 26vw, 380px); background: #dfc8af;}
+    .homeBundlePhoto > img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    padding: 0;
+}
+    .homeBundlePhoto .imageFallback {inset: 7%; border: 1px dashed #a7876a9c; background: #eee0cd4d;}
+    .homeBundlePhoto .imageFallback strong {font-family: var(--serif); font-size: 22px; font-weight: 500;}
+    .homeBundlePhoto .imageFallback small {font-size: 12px;}
+    .homeBundleBody {padding: 24px 29px 28px;}
+    .homeBundleBody h3 {font-size: clamp(31px, 3vw, 43px); margin: 9px 0 8px; line-height: 1.06;}
+    .homeBundleBody > p {font-family: var(--serif); font-size: 19px; line-height: 1.3; color: #846951; max-width: 540px; min-height: 49px; margin-bottom: 24px;}
+    .homeBundleFoot {display: flex; justify-content: space-between; align-items: center; gap: 10px; border-top: 1px solid #ddc7b1; padding-top: 17px;}
+    .homeBundleFoot strong {font-size: 17px; white-space: nowrap;}
+    .homeBundleFoot strong small {font-weight: 400; color: #8c7058; font-size: 12px;}
+    .homeBundleFoot > span {font-family: var(--serif); font-size: 18px; color: #614934; text-align: right;}
+    .homeBundleFoot > span span {margin-left: 5px;}
+
+    /* === LAM: About xuất hiện ngay trong trang chủ === */
+    .homeAbout {padding: 85px 0 92px; background: #e7d4c0; scroll-margin-top: 20px;}
+    .homeAboutTop {display: grid; grid-template-columns: 1.15fr .85fr; align-items: end; gap: 45px; padding-bottom: 37px; border-bottom: 1px solid #cbb199;}
+    .homeAboutTop h2 {font-size: clamp(52px, 5.3vw, 78px); margin: 12px 0 0;}
+    .homeAboutTop > p {font-family: var(--serif); font-size: 25px; line-height: 1.24; max-width: 530px; color: #745941; margin-bottom: 7px;}
+    .homeAboutColumns {display: grid; grid-template-columns: 1fr 1fr; gap: 9%; padding-top: 36px;}
+    .homeAboutStory h3, .homeAboutInfo h3 {font-size: 34px; margin: 12px 0 16px;}
+    .homeAboutStory p {font-family: var(--serif); font-size: 21px; line-height: 1.45; color: #735943;}
+    .homeAboutInfo details {padding: 15px 0; border-bottom: 1px solid #c9ae94;}
+    .homeAboutInfo summary {font-size: 14px; font-weight: 500; cursor: pointer;}
+    .homeAboutInfo details p {font-family: var(--serif); font-size: 19px; line-height: 1.4; margin: 13px 0 2px; color: #765b44;}
+
+    /* === LAM: danh sách sản phẩm lẻ, có giá, theo hai nhóm === */
+    .catalogPageTitle {padding-bottom: 40px;}
+    .catalogJump {display: flex; flex-wrap: wrap; gap: 11px; margin-top: 24px;}
+    .catalogJump button {padding: 12px 17px; border: 1px solid #c9ac8e; background: #f6eadd; color: #614833; font: 15px var(--serif);}
+    .catalogJump button:hover {background: #e8d4be;}
+    .catalogJump button span {margin-left: 20px;}
+    .catalogSection {scroll-margin-top: 92px; padding-top: 18px;}
+    .catalogSectionTop {display: grid; grid-template-columns: 1fr minmax(270px, 360px); align-items: center; gap: 40px; margin-bottom: 32px;}
+    .catalogHeading h2 {font-size: clamp(48px, 5vw, 72px); margin: 13px 0 13px;}
+    .catalogHeading > p {font-family: var(--serif); font-size: 21px; line-height: 1.35; color: #82664d; max-width: 620px;}
+    .catalogComboSummary {background: #e8d2ba; padding: 25px 28px; border-left: 3px solid #a78361;}
+    .catalogComboSummary > strong {display: block; font: 600 30px var(--serif); margin: 10px 0 3px;}
+    .catalogComboSummary > span {font-family: var(--serif); font-size: 16px; color: #80664e;}
+    .catalogComboSummary > p {font-family: var(--serif); font-size: 17px; line-height: 1.32; margin: 13px 0 17px; color: #72573f;}
+    .catalogComboSummary .button {font-size: 11px; padding: 12px 14px;}
+    .catalogGrid {padding-bottom: 34px;}
+    .catalogTeaSection {padding-top: 64px; border-top: 1px solid #d1baa2; margin-top: 23px; padding-bottom: 25px;}
+
+    @media (max-width: 850px) {
+      .homeBundlesIntro {align-items: start;}
+      .homeBundleFoot {align-items: start; flex-direction: column;}
+      .homeBundleFoot > span {text-align: left;}
+      .homeAboutColumns {gap: 5%;}
+      .catalogSectionTop {grid-template-columns: 1fr 300px; gap: 20px;}
+    }
+    @media (max-width: 680px) {
+      .homeBundles {padding: 51px 16px 58px;}
+      .homeBundlesIntro {display: block; margin-bottom: 22px;}
+      .homeBundlesIntro h2 {font-size: 50px;}
+      .homeBundlesIntro > p {font-size: 19px; margin: 17px 0 0;}
+      .homeBundlesGrid {grid-template-columns: 1fr; gap: 20px;}
+      .homeBundlePhoto {height: 265px;}
+      .homeBundleBody {padding: 21px 22px 23px;}
+      .homeBundleBody > p {min-height: 0; font-size: 19px;}
+      .homeBundleFoot {flex-direction: row; align-items: center;}
+      .homeBundleFoot > span {text-align: right; font-size: 16px;}
+      .homeAbout {padding: 55px 0 64px;}
+      .homeAboutTop, .homeAboutColumns {grid-template-columns: 1fr; gap: 18px;}
+      .homeAboutTop h2 {font-size: 55px;}
+      .homeAboutTop > p {font-size: 22px;}
+      .homeAboutStory h3, .homeAboutInfo h3 {font-size: 30px;}
+      .homeAboutStory p {font-size: 19px;}
+      .catalogPageTitle {padding-bottom: 25px;}
+      .catalogSection {scroll-margin-top: 78px;}
+      .catalogSectionTop {grid-template-columns: 1fr; gap: 15px;}
+      .catalogHeading h2 {font-size: 53px;}
+      .catalogComboSummary {padding: 20px;}
+      .catalogGrid {gap: 18px 12px;}
+      .catalogTeaSection {padding-top: 45px; margin-top: 15px;}
+    }
+
+
+    /* ==========================================================
+       LAM | OLIVE EDITION  •  #515e2c
+       Additive art direction. Existing layout and image paths stay intact.
+       ========================================================== */
+    :root {
+      --olive: #515e2c;
+      --olive-deep: #303b21;
+      --olive-ink: #3c4827;
+      --olive-mist: #e6e8db;
+      --olive-pale: #f2f1e8;
+      --gold-muted: #b69b6a;
+    }
+    ::selection { background: #515e2c; color: #fff9ed; }
+    body { background: #f1e5d6; }
+    :focus-visible { outline: 2px solid var(--olive); outline-offset: 4px; }
+    .kicker { color: var(--olive); letter-spacing: .15em; }
+    .kicker::before {
+      content: ''; display: inline-block; width: 15px; height: 1px;
+      margin-right: 10px; vertical-align: middle; background: currentColor;
+      opacity: .8;
+    }
+    .muted { color: #82745f; }
+    .textLink { color: var(--olive); transition: color .2s, gap .2s; }
+    .textLink:hover { color: var(--olive-deep); gap: 20px; }
+    .pill, .button { background: var(--olive); border-color: var(--olive); color: #fdf9ef; }
+    .pill:hover, .button:hover { background: var(--olive-deep); border-color: var(--olive-deep); }
+    .pill.outline, .button.light { border-color: var(--olive); color: var(--olive); }
+    .button.light:hover { background: var(--olive-mist); }
+    .badgeCount { background: var(--olive); }
+
+    /* Navigation: a real Home entry replaces Collections */
+    .nav { gap: 35px; }
+    header { background: linear-gradient(180deg, #f0e2d3b3 0%, #f0e2d300 100%); }
+    .nav button, .headerActions button { color: #454633; }
+    .nav button { position: relative; padding: 7px 0 11px; }
+    .nav button::after {
+      content: ''; position: absolute; left: 0; right: 100%; bottom: 5px;
+      height: 1px; background: currentColor; transition: right .25s ease;
+    }
+    .nav button:hover::after, body:has(#home.active) .nav button.navHome::after { right: 0; }
+    .nav button.navHome { font-weight: 600; }
+    .stickyHeader header, body:has(.page.active:not(#home)) header {
+      background: #f4ecdf; border-bottom: 1px solid #c8c8ad;
+      box-shadow: 0 5px 22px #3542250b;
+    }
+    .stickyHeader .nav button.navHome, body:has(.page.active:not(#home)) .nav button.navHome { color: var(--olive); }
+    .headerActions button:hover { color: var(--olive); opacity: 1; }
+
+    /* Hero: restrained olive accent on the existing photograph */
+    .heroText::before {
+      content: ''; position: absolute; width: 2px; height: 63px;
+      top: 6px; left: -23px; background: var(--olive);
+      box-shadow: 0 0 0 4px #f6ead822;
+    }
+    .heroText .pill { box-shadow: 0 9px 25px #3440202e; }
+    .heroText .pill span { transition: transform .25s; }
+    .heroText .pill:hover span { transform: translateX(4px); }
+
+    /* Collection: keep all cutout ceramics and the current image proportions */
+    .collectionHome {
+      background: radial-gradient(ellipse at 1% 95%, #cbd1b84d, transparent 37%),
+        linear-gradient(155deg, #f1e4d5 0%, #eddfce 65%, #e8d6c2 100%);
+      border-top: 1px solid #d7d2b6;
+    }
+    .collectionTitle h2:after { background: var(--olive); height: 2px; opacity: .75; }
+    .collectionTitle .kicker { color: var(--olive); }
+    .lotusBanner { box-shadow: 0 13px 34px #515e2c16; }
+    .cutProduct .productName { transition: color .2s; }
+    .cutProduct:hover .productName { color: var(--olive); }
+    .cutProduct .productSpec { color: #8b7862; }
+    .collectionOrnament { opacity: .18; }
+    .collectionOrnament svg { stroke: var(--olive); }
+
+    /* Two existing combo cards: olive-edged editorial presentation */
+    .homeBundles {
+      position: relative;
+      background: linear-gradient(180deg, #f5eee3, #f0e7d9);
+      border-top: 1px solid #d9d7c0;
+    }
+    .homeBundles::before {
+      content: ''; position: absolute; top: 0; left: 5.7%; width: 74px;
+      height: 3px; background: var(--olive);
+    }
+    .homeBundlesIntro > p { color: #766d58; }
+    .homeBundleCard {
+      background: #fcf7ee; border: 1px solid #d7d4bb;
+      border-top: 3px solid var(--olive);
+      box-shadow: 0 12px 30px #4b492311;
+    }
+    .homeBundleCard:hover { box-shadow: 0 20px 38px #414b2a24; }
+    .homeBundleBody .kicker { color: var(--olive); }
+    .homeBundleBody > p { color: #796c59; }
+    .homeBundleFoot { border-color: #d6d6bc; }
+    .homeBundleFoot strong, .homeBundleFoot > span { color: var(--olive); }
+    .homeBundleFoot > span span { display: inline-block; transition: transform .2s; }
+    .homeBundleCard:hover .homeBundleFoot > span span { transform: translate(3px,-3px); }
+
+    /* Discovery: two product cards remain exactly as in the uploaded file */
+    .discover {
+      background: linear-gradient(115deg, #e6e2d3 0%, #eae2d1 57%, #eee0cf 100%);
+      border-top: 1px solid #d5d5bd;
+    }
+    .discoverIntro h2 { color: #4c4937; }
+    .discoverCard {
+      background: #faf4e9; border: 1px solid #dad5bd;
+      border-bottom: 3px solid var(--olive);
+      box-shadow: 0 8px 22px #35402212;
+    }
+    .discoverCard:hover { box-shadow: 0 15px 27px #35402220; }
+    .discoverCard .cardTitle { color: var(--olive-ink); }
+    .discoverCard .cardSpec { color: #837c65; }
+
+    /* ABOUT: quiet botanical art, editorial rules, chapter numbers, signature */
+    .homeAbout {
+      position: relative; overflow: hidden;
+      background: radial-gradient(ellipse at 99% 8%, #d4dcc044, transparent 36%),
+        linear-gradient(120deg, #e9e2d1 0%, #f1e8d9 49%, #e5e3d3 100%);
+      border-top: 1px solid #d2d2b6;
+      border-bottom: 1px solid #c7c8a8;
+    }
+    .homeAbout .container { position: relative; z-index: 1; }
+    .aboutLotusArt {
+      position: absolute; top: 15px; right: -64px; width: clamp(270px, 37vw, 530px);
+      height: auto; color: var(--olive); opacity: .13;
+      pointer-events: none; transform: rotate(-12deg);
+    }
+    .aboutEdition {
+      display: flex; align-items: center; gap: 14px; margin-bottom: 28px;
+      color: var(--olive); font: 500 10px var(--sans);
+      letter-spacing: .19em;
+    }
+    .aboutEditionLine { display: block; width: 44px; height: 2px; background: var(--olive); }
+    .aboutEditionRight { margin-left: auto; opacity: .72; }
+    .homeAboutTop { border-bottom: 1px solid #b8bda0; padding-bottom: 42px; }
+    .homeAboutTop h2 { color: #4a4834; }
+    .homeAboutTop > p {
+      position: relative; border-left: 2px solid var(--olive);
+      padding-left: 23px; color: #625f4d;
+    }
+    .homeAboutColumns { padding-top: 37px; }
+    .aboutColumnLabel {
+      display: flex; justify-content: space-between; align-items: center;
+      gap: 14px; margin-bottom: 11px;
+      color: var(--olive); font: 500 11px var(--sans);
+      letter-spacing: .08em;
+    }
+    .aboutColumnLabel > span:last-child { white-space: nowrap; opacity: .7; }
+    .homeAboutStory h3, .homeAboutInfo h3 { color: #444632; }
+    .homeAboutStory h3 { position: relative; padding-bottom: 16px; }
+    .homeAboutStory h3::after {
+      content: ''; position: absolute; left: 0; bottom: 0;
+      width: 62px; height: 2px; background: var(--olive);
+    }
+    .homeAboutStory p {
+      font-family: var(--sans); font-size: 15px; font-weight: 400;
+      line-height: 1.92; letter-spacing: .005em; color: #66624e;
+      max-width: 610px;
+    }
+    .aboutValues {
+      display: flex; flex-wrap: wrap; gap: 8px; margin-top: 25px;
+    }
+    .aboutValues span {
+      display: inline-flex; align-items: center; gap: 8px;
+      border: 1px solid #b8c09f; background: #f6f4eab8;
+      padding: 9px 12px; color: var(--olive);
+      font: 500 10px var(--sans); letter-spacing: .01em;
+    }
+    .aboutValues i { font-size: 12px; font-style: normal; }
+    .homeAboutInfo {
+      position: relative; padding-left: 29px; border-left: 1px solid #bdc3a6;
+    }
+    .homeAboutInfo h3 { margin-bottom: 16px; }
+    .homeAboutInfo details {
+      padding: 17px 0; border-bottom: 1px solid #c4c8b2;
+      transition: background .2s;
+    }
+    .homeAboutInfo details:first-of-type { border-top: 1px solid #c4c8b2; }
+    .homeAboutInfo summary {
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 15px; color: #3f492d; font-weight: 600;
+      list-style: none; cursor: pointer;
+    }
+    .homeAboutInfo summary::-webkit-details-marker { display: none; }
+    .homeAboutInfo summary::after {
+      content: '+'; width: 24px; height: 24px; border: 1px solid #b7be9f;
+      border-radius: 50%; display: inline-grid; place-items: center;
+      flex-shrink: 0; color: var(--olive); font-size: 17px; font-weight: 400;
+      transition: background .2s;
+    }
+    .homeAboutInfo details[open] summary::after { content: '−'; background: var(--olive); color: #fff; border-color: var(--olive); }
+    .homeAboutInfo details p {
+      font: 400 14px/1.85 var(--sans); color: #696651;
+      max-width: 500px; padding-right: 28px;
+    }
+    .aboutSignature {
+      display: flex; align-items: center; gap: 14px; margin-top: 49px;
+      padding-top: 21px; border-top: 1px solid #b9c1a3;
+      color: var(--olive); font: 400 12px var(--sans);
+      letter-spacing: .01em;
+    }
+    .aboutSignatureMark { font-size: 19px; line-height: 1; }
+    .aboutSignatureLine { height: 1px; background: #a9b38e; flex: 1; min-width: 15px; }
+    .aboutSignature > span:last-child { font: 600 22px var(--serif); letter-spacing: .08em; }
+
+    /* Product pages, catalog and small interactive components */
+    .pageTitle { position: relative; }
+    .pageTitle::after {
+      content: ''; display: block; width: 68px; height: 2px;
+      margin-top: 25px; background: var(--olive);
+    }
+    .pageTitle h1 { color: #4c4935; }
+    .shopTools input:focus, .shopTools select:focus, .field input:focus,
+    .field textarea:focus, .field select:focus {
+      border-color: var(--olive); box-shadow: 0 0 0 2px #515e2c19;
+    }
+    .shopPhoto { background: #e7e2d4; border: 1px solid #dcd6c6; }
+    .shopCard .price { color: var(--olive); }
+    .shopCard h3 { transition: color .2s; }
+    .shopCard:hover h3 { color: var(--olive); }
+    .shopCard:hover .shopPhoto { border-color: #a9b18f; }
+    .wishHeart { color: var(--olive); background: #f9f6ebeb; }
+    .catalogJump button { border-color: #b9c3a2; background: #f5f2e8; color: var(--olive); }
+    .catalogJump button:hover { background: #e6e8d9; }
+    .catalogComboSummary { background: #e7e8da; border-left-color: var(--olive); }
+    .catalogComboSummary > strong { color: var(--olive); }
+    .catalogTeaSection { border-top-color: #b8bfa4; }
+    .orderSummary { background: #e5e7d9; }
+    .orderSummary .between { border-color: #c7cbb3; }
+    .orderBox { background: #f0f0e4; border-left: 3px solid var(--olive); }
+    .builderChoices button:hover { background: #e4e9d8; }
+    .showroom { background: linear-gradient(130deg, #d7d9c7, #eee2d1); }
+    .drawer { background: #faf8f0; }
+    .modal { background: #fbf7ed; }
+    .modalMedia { background: #e9e6d9; }
+    .toast, .editToggle { background: var(--olive-deep); }
+    .editorBar { border-color: #a8b18e; background: #fbf9f1; }
+    .editing .imageSlot .uploadHit { border-color: #515e2c99; }
+    .editing .imageSlot .uploadHit:hover { border-color: var(--olive); }
+    .editing .imageSlot::after { background: #3c4827e6; }
+
+    /* Botanical olive footer; wave path is recolored to match. */
+    .footerWave { background: #e6e2d3; }
+    footer { background: var(--olive-deep); color: #f1e9d9; }
+    .footerGrid p { color: #d4d9c5; }
+    .footerCol h4 { color: #f3eedf; }
+    .footerCol button { color: #c8d0b8; }
+    .footerCol button:hover { color: #fff8e9; }
+    .footerBottom { border-color: #a6b38c52; color: #c3cbb2; }
+    .footerFloral { opacity: .18; }
+    .footerQuote { color: #e9e8d4; }
+
+    @media (max-width: 850px) {
+      .homeAboutInfo { padding-left: 20px; }
+      .aboutLotusArt { right: -130px; opacity: .09; }
+    }
+    @media (max-width: 680px) {
+      .heroText::before { left: -12px; height: 48px; }
+      .mobileMenu.open { background: #f4eddf; }
+      .mobileMenu button { border-bottom-color: #c8ceb3; }
+      .aboutEdition { margin-bottom: 23px; font-size: 9px; gap: 9px; }
+      .aboutEditionLine { width: 22px; }
+      .aboutEditionRight { display: none; }
+      .homeAboutTop > p { padding-left: 15px; }
+      .homeAboutInfo { padding-left: 0; border-left: 0; margin-top: 13px; }
+      .homeAboutStory p { font-size: 14px; line-height: 1.85; }
+      .aboutValues { margin-top: 18px; }
+      .aboutSignature { gap: 8px; font-size: 10px; margin-top: 35px; }
+      .aboutSignature > span:nth-child(2) { max-width: 210px; }
+      .homeBundles::before { left: 16px; }
+    }
+  
+/* === LAM / Showroom 360° - phòng trưng bày tối giản, tông olive === */
+.vrIntro {display:flex;align-items:end;justify-content:space-between;gap:28px}
+.vrIntro .pageTitle {padding-bottom:27px}
+.vrIntroNote {max-width:280px;color:#756f5b;line-height:1.7;margin-bottom:29px;font-size:12px}
+.vrStage {position:relative;width:100%;height:clamp(400px,49vw,650px);background:#ded9c9;overflow:hidden;touch-action:pan-y;cursor:grab;isolation:isolate;outline-offset:4px}
+.vrStage.isDragging {cursor:grabbing;touch-action:none}
+.vrStage:fullscreen {height:100dvh;background:#dcd8cd}
+.vrStage:fullscreen .vrCanvas {width:100%;height:100%}
+.vrCanvas {display:block;width:100%;height:100%;background:#e9e1d3}
+.vrHotspots {position:absolute;inset:0;pointer-events:none;z-index:3}
+.vrHotspot {position:absolute;display:grid;place-items:center;width:38px;height:38px;border:1.5px solid #fff8e8;background:#515e2ce8;color:#fff9e8;border-radius:50%;font:600 23px var(--sans);box-shadow:0 0 0 7px #f4efdf36,0 4px 18px #222b205e;transform:translate(-50%,-50%);pointer-events:auto;transition:background .18s,box-shadow .18s;z-index:4}
+.vrHotspot:hover,.vrHotspot:focus-visible {background:#354224;box-shadow:0 0 0 10px #fff8e845,0 6px 24px #222b2066}
+.vrHotspot .vrTooltip {position:absolute;bottom:49px;left:50%;transform:translateX(-50%);background:#fff8ee;color:#45502c;border:1px solid #d4c7ac;min-width:160px;max-width:210px;padding:11px 13px;text-align:left;box-shadow:0 8px 28px #24271c33;pointer-events:none;opacity:0;visibility:hidden;transition:opacity .18s;white-space:nowrap}
+.vrHotspot:hover .vrTooltip,.vrHotspot:focus-visible .vrTooltip {opacity:1;visibility:visible}
+.vrTooltip strong {display:block;font:600 13px var(--sans);margin-bottom:3px}
+.vrTooltip small {font:12px var(--sans);color:#83715a}
+.vrTop {position:absolute;z-index:5;left:24px;right:24px;top:23px;display:flex;justify-content:space-between;align-items:flex-start;gap:16px;pointer-events:none}
+.vrTopLabel {background:#f9f5e9e8;backdrop-filter:blur(10px);padding:13px 17px;border-left:3px solid #515e2c;max-width:290px}
+.vrTopLabel span {display:block;color:#515e2c;font:600 10px var(--sans);letter-spacing:.14em}
+.vrTopLabel strong {display:block;font:500 24px var(--serif);color:#423d2d;margin-top:2px}
+.vrTopRight {background:#3a452bc7;color:#fff8e8;font:500 10px var(--sans);letter-spacing:.13em;padding:10px 14px;backdrop-filter:blur(8px)}
+.vrBottom {position:absolute;z-index:5;left:22px;right:22px;bottom:21px;display:flex;align-items:flex-end;justify-content:space-between;gap:14px;pointer-events:none}
+.vrHelp {background:#f9f5e9de;backdrop-filter:blur(10px);padding:11px 14px;color:#4b4a39;font:11px/1.7 var(--sans);max-width:270px}
+.vrHelp strong {color:#515e2c}
+.vrControls {display:flex;gap:6px;pointer-events:auto;flex-wrap:wrap;justify-content:flex-end}
+.vrControl {border:1px solid #f8f3e5aa;background:#303c2ddc;color:#fff9ef;min-width:39px;height:39px;padding:0 11px;font:600 16px var(--sans);backdrop-filter:blur(10px);transition:background .2s}
+.vrControl:hover,.vrControl.isActive {background:#697a43}
+.vrControl[title="Tự xoay"] {font-size:11px;padding:0 14px}
+.vrLoading {position:absolute;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:13px;background:#e9e2d4;z-index:2;color:#515e2c;font:13px var(--sans);text-align:center;padding:25px}
+.vrLoading:before {content:'';width:32px;height:32px;border:2px solid #a9b18c;border-top-color:#515e2c;border-radius:50%;animation:vrLoadingSpin 1s linear infinite}
+@keyframes vrLoadingSpin {to{transform:rotate(360deg)}}
+.vrTourBar {display:grid;grid-template-columns:minmax(180px,1fr) repeat(4,minmax(0,1fr));gap:0;border:1px solid #c9c7ae;background:#f6f1e6;margin:0 0 24px}
+.vrTourBrand {padding:17px 20px;background:#515e2c;color:#faf4e7;display:flex;flex-direction:column;justify-content:center;gap:5px}
+.vrTourBrand strong {font:500 20px var(--serif)}
+.vrTourBrand small {font:10px var(--sans);opacity:.8}
+.vrSceneButton {border:0;border-right:1px solid #d9d5c2;background:transparent;padding:18px 9px;text-align:center;color:#596343;font:600 12px var(--sans);transition:background .2s}
+.vrSceneButton:last-child {border-right:0}
+.vrSceneButton:hover,.vrSceneButton.isActive {background:#e1e6d4}
+.vrSceneButton span {display:block;font:11px var(--sans);font-weight:400;color:#8b846f;margin-top:5px}
+.vrBelow {display:grid;grid-template-columns:1.1fr .9fr;gap:32px;align-items:start;padding:16px 0 82px}
+.vrBelow h3 {font-size:37px;margin:7px 0 12px}
+.vrBelow p {font:16px/1.8 var(--sans);color:#746d5a;max-width:650px}
+.vrBelow aside {border-left:3px solid #515e2c;padding:15px 22px;background:#e8e7d9;color:#515e2c}
+.vrBelow aside strong {display:block;font:600 12px var(--sans);letter-spacing:.08em;margin-bottom:9px}
+.vrBelow aside p {font:13px/1.75 var(--sans);margin:0}
+@media(max-width:680px){
+.vrIntro {display:block}.vrIntroNote {display:none}
+.vrStage {height:clamp(460px,70vh,650px);touch-action:none}
+.vrTop {left:12px;right:12px;top:12px}.vrTopLabel {padding:10px 12px}.vrTopLabel strong {font-size:21px}.vrTopRight {display:none}
+.vrBottom {left:10px;right:10px;bottom:10px;align-items:end;flex-direction:column}.vrHelp {font-size:10px;max-width:220px;align-self:flex-start;padding:7px 10px}
+.vrControls {gap:4px}.vrControl {min-width:36px;height:36px;padding:0 9px}
+.vrHotspot {width:34px;height:34px}
+.vrTourBar {grid-template-columns:repeat(4,minmax(0,1fr))}.vrTourBrand {grid-column:1/-1;padding:11px 16px;flex-direction:row;align-items:center;justify-content:space-between}.vrTourBrand strong {font-size:18px}.vrSceneButton {padding:12px 3px;font-size:10px}.vrSceneButton span {font-size:9px}
+.vrBelow {grid-template-columns:1fr;gap:10px;padding:9px 0 50px}.vrBelow h3 {font-size:31px}.vrBelow p {font-size:13px}
+}
+
+
+/* Cubemap 360° panorama: hoạt động trực tiếp trong HTML, không cần WebGL hoặc thư viện */
+body:has(#showroom.active) .editToggle, body:has(#showroom.active) .editorBar {display:none !important;}
+.vrStage {perspective-origin:50% 50%;perspective:600px;}
+.vrCube {position:absolute;left:50%;top:50%;transform-style:preserve-3d;pointer-events:none;will-change:transform;}
+.vrCubeFace {position:absolute;inset:0;overflow:hidden;backface-visibility:hidden;transform-style:flat;}
+.vrCubeFace img {width:100%;height:100%;display:block;object-fit:cover;max-width:none;}
+.vrCubeFace[data-vr-face="front"] {transform:translateZ(calc(-1 * var(--vr-depth)));}
+.vrCubeFace[data-vr-face="right"] {transform:rotateY(-90deg) translateZ(calc(-1 * var(--vr-depth)));}
+.vrCubeFace[data-vr-face="back"] {transform:rotateY(180deg) translateZ(calc(-1 * var(--vr-depth)));}
+.vrCubeFace[data-vr-face="left"] {transform:rotateY(90deg) translateZ(calc(-1 * var(--vr-depth)));}
+.vrCubeFace[data-vr-face="top"] {transform:rotateX(-90deg) translateZ(calc(-1 * var(--vr-depth)));}
+.vrCubeFace[data-vr-face="bottom"] {transform:rotateX(90deg) translateZ(calc(-1 * var(--vr-depth)));}
+
+  </style>
+</head>
+
+<body>
+  <!-- This script contains optional embedded images. It starts empty. The built-in editor can fill it. -->
+  <script id="lam-image-data" type="application/json">{}</script>
+  <header id="header">
+    <div class="headerInner">
+      <div class="brand" onclick="navigate('home')" role="button" tabindex="0" aria-label="LAM - Trang chủ">
+      <img src="images/logo-dark.png" alt="LAM Logo" style="width:170px;height:auto;display:block;transform:translateX(-20px);">
+      </div>
+      <nav class="nav"><button class="navHome" onclick="navigate('home')">Trang chủ</button><button
+          onclick="navigate('shop')">Shop</button><button onclick="navigate('showroom')">Showroom 360°</button><button onclick="goHomeSection('homeAbout')">About</button><button
+          onclick="navigate('care')">Journal</button></nav>
+      <div class="headerActions"><button class="iconButton" aria-label="Tìm kiếm"
+          onclick="navigate('shop');setTimeout(()=>document.getElementById('searchInput').focus(),50)"><svg
+            viewBox="0 0 24 24">
+            <circle cx="10.5" cy="10.5" r="6.5" />
+            <path d="m15.5 15.5 5 5" />
+          </svg></button><button class="iconButton" aria-label="Yêu thích" onclick="navigate('wishlist')"><svg
+            viewBox="0 0 24 24">
+            <path d="M20.5 8c0 5-8.5 11-8.5 11S3.5 13 3.5 8a4.5 4.5 0 0 1 8.5-1.8A4.5 4.5 0 0 1 20.5 8Z" />
+          </svg></button><button class="iconButton" aria-label="Giỏ hàng" onclick="openCart()"><svg viewBox="0 0 24 24">
+            <rect x="4.5" y="7" width="15" height="14" rx="1.5" />
+            <path d="M8.5 9V6a3.5 3.5 0 0 1 7 0v3" />
+          </svg><span class="badgeCount" id="cartCount">0</span></button><button class="iconButton menuToggle"
+          aria-label="Mở menu" onclick="document.getElementById('mobileMenu').classList.toggle('open')"><svg
+            viewBox="0 0 24 24">
+            <path d="M3 7h18M3 12h18M3 17h18" />
+          </svg></button></div>
+    </div>
+    <nav class="mobileMenu" id="mobileMenu"><button onclick="navigate('home')">Trang chủ</button><button onclick="navigate('shop')">Sản
+        phẩm</button><button onclick="navigate('builder')">Phối bàn ăn 2D</button><button
+        onclick="navigate('showroom')">Showroom 360°</button><button onclick="goHomeSection('homeAbout')">Về LAM</button></nav>
+  </header>
+  <main>
+    <section class="page active" id="home">
+      <div class="hero">
+        <div class="imageSlot heroPhoto" data-image="hero" data-size="1920 × 800 px"><img
+            alt="Không gian bàn gốm LAM" />
+          <div class="imageFallback"><svg viewBox="0 0 24 24">
+              <rect x="2" y="4" width="20" height="16" rx="2" />
+              <circle cx="8" cy="9" r="2" />
+              <path d="m3 17 6-6 4 4 3-3 5 5" />
+            </svg><strong>ẢNH HERO / KHÔNG GIAN BÀN GỐM</strong><small>Để trống · 1920 × 800 px<br>Nhấn “Thêm ảnh” để
+              chèn ảnh sau</small></div><button class="uploadHit" aria-label="Thay ảnh hero"
+            onclick="chooseImage('hero')"></button>
+        </div>
+        <div class="heroText">
+          <h1>Di sản<br>trong từng bữa ăn</h1>
+          <p>Gốm Việt đương đại,<br>cho những khoảnh khắc đời thường thêm trọn vẹn.</p><button class="pill"
+            onclick="navigate('shop')">Khám phá sản phẩm <span>→</span></button>
+        </div>
+      </div>
+      <div class="collectionHome">
+        <div class="collectionTop">
+          <div class="collectionTitle">
+            <div class="kicker">BỘ SƯU TẬP</div>
+            <h2>Sen Việt</h2>
+            <p>Lấy cảm hứng từ hoa sen, biểu tượng của sự thanh khiết và bình yên trong văn hóa Việt.</p><button
+              class="textLink" onclick="navigate('shop')">Xem các sản phẩm <span>→</span></button>
+          </div>
+          <div class="imageSlot lotusBanner" data-image="lotus" data-size="1100 × 400 px"><img
+              alt="Hoa sen - cảm hứng bộ sưu tập" />
+            <div class="imageFallback"><svg viewBox="0 0 24 24">
+                <rect x="2" y="4" width="20" height="16" rx="2" />
+                <circle cx="8" cy="9" r="2" />
+                <path d="m3 17 6-6 4 4 3-3 5 5" />
+              </svg><strong>ẢNH HOA SEN / BANNER</strong><small>1100 × 400 px</small></div><button class="uploadHit"
+              aria-label="Thay ảnh hoa sen" onclick="chooseImage('lotus')"></button>
+          </div>
+        </div>
+        <div class="productLine four" id="homeBowls"></div>
+        <div class="productLine five" id="homePlates"></div>
+        <div class="collectionOrnament" aria-hidden="true"><svg viewBox="0 0 240 240">
+            <path
+              d="M120 220Q110 160 120 90M120 165Q40 150 15 90Q85 80 120 165M120 180Q185 120 230 140Q200 195 120 180M120 100Q70 50 120 15Q165 60 120 100M120 100Q55 70 45 25Q105 35 120 100M120 100Q185 60 195 25Q130 35 120 100" />
+          </svg></div>
+      </div>
+
+      <!-- Hai bộ sản phẩm trên trang chủ: nhấn vào để xem sản phẩm lẻ và giá -->
+      <section class="homeBundles" id="homeBundles" aria-labelledby="homeBundlesTitle">
+        <div class="homeBundlesIntro">
+          <div>
+            <div class="kicker">LAM / BỘ SẢN PHẨM</div>
+            <h2 id="homeBundlesTitle">Trọn bộ cho<br>những khoảnh khắc đẹp.</h2>
+          </div>
+          <p>Hai cách tận hưởng gốm Sen Việt. Chọn một bộ để khám phá từng thiết kế và giá bán riêng lẻ.</p>
+        </div>
+        <div class="homeBundlesGrid">
+          <article class="homeBundleCard" role="link" tabindex="0" aria-label="Khám phá bộ bàn ăn và các sản phẩm bát đĩa" onclick="if(!editor)openCollectionSection('dining')" onkeydown="if(!editor&&(event.key==='Enter'||event.key===' ')){event.preventDefault();openCollectionSection('dining')}">
+            <div id="homeComboBanMedia"></div>
+            <div class="homeBundleBody">
+              <div class="kicker">01 / BỘ BÀN ĂN</div>
+              <h3>Bộ bàn ăn Sen Việt</h3>
+              <p>7 món gốm dành cho bữa cơm sum vầy. Khám phá bát, đĩa và thố canh trong cùng bộ sưu tập.</p>
+              <div class="homeBundleFoot"><strong>3.190.000đ <small>/ bộ</small></strong><span>Khám phá bát &amp; đĩa <span aria-hidden="true">↗</span></span></div>
+            </div>
+          </article>
+          <article class="homeBundleCard" role="link" tabindex="0" aria-label="Khám phá bộ trà chiều và các sản phẩm ấm chén bình hoa" onclick="if(!editor)openCollectionSection('tea')" onkeydown="if(!editor&&(event.key==='Enter'||event.key===' ')){event.preventDefault();openCollectionSection('tea')}">
+            <div id="homeComboTraMedia"></div>
+            <div class="homeBundleBody">
+              <div class="kicker">02 / BỘ TRÀ CHIỀU</div>
+              <h3>Bộ trà chiều Sen Việt</h3>
+              <p>1 ấm trà và 6 chén trà. Xem thêm các thiết kế ấm, chén và bình hoa ở phần cuối bộ sưu tập.</p>
+              <div class="homeBundleFoot"><strong>2.990.000đ <small>/ bộ</small></strong><span>Khám phá ấm &amp; chén <span aria-hidden="true">↗</span></span></div>
+            </div>
+          </article>
+        </div>
+      </section>
+      <div class="discover">
+        <div class="discoverIntro">
+          <div class="kicker">KHÁM PHÁ THÊM</div>
+          <h2>Các dòng<br>gốm khác</h2><button class="textLink" onclick="navigate('shop')">Xem tất cả sản phẩm
+            <span>→</span></button>
+        </div>
+        <div class="discoverCards" id="homeDiscover"></div>
+      </div>
+      <!-- About hiển thị trực tiếp trên trang chủ -->
+      <section class="homeAbout" id="homeAbout" aria-labelledby="homeAboutTitle">
+        <svg class="aboutLotusArt" viewBox="0 0 460 460" aria-hidden="true" focusable="false">
+          <g fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M230 405 C225 328 229 266 230 211"/>
+            <path d="M230 315 C178 274 122 271 77 292 C122 339 177 350 230 315Z"/>
+            <path d="M230 335 C281 289 343 285 388 307 C341 358 284 368 230 335Z"/>
+            <path d="M230 213 C198 170 198 124 230 69 C262 124 262 170 230 213Z"/>
+            <path d="M225 214 C166 202 143 159 141 109 C189 123 219 159 225 214Z"/>
+            <path d="M235 214 C294 202 317 159 319 109 C271 123 241 159 235 214Z"/>
+            <path d="M215 213 C151 225 111 194 92 153 C148 149 192 169 215 213Z"/>
+            <path d="M245 213 C309 225 349 194 368 153 C312 149 268 169 245 213Z"/>
+            <path d="M230 212 C178 227 149 227 121 217"/>
+            <path d="M230 212 C282 227 311 227 339 217"/>
+            <path d="M92 395 Q230 414 368 395"/>
+          </g>
+        </svg>
+        <div class="container">
+          <div class="aboutEdition"><span class="aboutEditionLine"></span><span>THIẾT KẾ TỪ CẢM HỨNG VIỆT</span><span class="aboutEditionRight">LAM · SEN VIỆT</span></div>
+          <div class="homeAboutTop">
+            <div>
+              <div class="kicker">CÂU CHUYỆN THƯƠNG HIỆU / ABOUT LAM</div>
+              <h2 id="homeAboutTitle">Đẹp từ những<br>điều giản dị.</h2>
+            </div>
+            <p>LAM là ý tưởng thương hiệu gốm Việt đương đại, kết nối vẻ đẹp truyền thống với tinh thần sống tối giản.</p>
+          </div>
+          <div class="homeAboutColumns">
+            <div class="homeAboutStory">
+              <div class="aboutColumnLabel"><div class="kicker">GỐM VIỆT / MỘT GÓC NHÌN MỚI</div><span>01 / 02</span></div>
+              <h3>Di sản trong từng bữa ăn</h3>
+              <p>Bộ sưu tập Sen Việt lấy cảm hứng từ hoa sen, màu men ấm và những đường cong mềm. Mỗi món gốm được hình dung như một phần của bữa cơm gia đình và những khoảnh khắc thường nhật.</p>
+              <p>Thiết kế đề cao sự hài hòa giữa công năng và thẩm mỹ, để vẻ đẹp của gốm hiện diện một cách tự nhiên trong không gian sống.</p>
+              <div class="aboutValues" aria-label="Tinh thần thiết kế của LAM">
+                <span><i aria-hidden="true">✦</i> Cảm hứng hoa sen</span>
+                <span><i aria-hidden="true">✦</i> Sắc men ấm</span>
+                <span><i aria-hidden="true">✦</i> Tinh giản</span>
+              </div>
+            </div>
+            <div class="homeAboutInfo">
+              <div class="aboutColumnLabel"><span class="kicker">DỊCH VỤ & CHÍNH SÁCH</span><span>02 / 02</span></div>
+              <h3>Thông tin mua sắm</h3>
+              <details open><summary>Vận chuyển</summary><p>Phí giao hàng 45.000đ cho đơn dưới 2.000.000đ. Miễn phí vận chuyển từ 2.000.000đ.</p></details>
+              <details><summary>Đổi trả</summary><p>Hỗ trợ đổi trả trong 7 ngày đối với hàng hư hại khi vận chuyển, giao sai sản phẩm hoặc có lỗi sản xuất.</p></details>
+              <details><summary>Gói quà</summary><p>Gói quà LAM Signature: 99.000đ, có thể kèm lời nhắn.</p></details>
+              <details><summary>Liên hệ</summary><p>Điện thoại: 0968 208 521.</p></details>
+            </div>
+          </div>
+          <div class="aboutSignature" aria-hidden="true"><span class="aboutSignatureMark">✳</span><span>Vẻ đẹp nằm trong những điều được nâng niu mỗi ngày.</span><span class="aboutSignatureLine"></span><span>LAM</span></div>
+        </div>
+      </section>
+    </section>
+    <section class="page" id="shop">
+      <div class="container">
+        <div class="pageTitle">
+          <div class="kicker">LAM / CỬA HÀNG</div>
+          <h1>Tất cả sản phẩm.</h1>
+          <p class="muted">Những thiết kế thuộc bộ sưu tập Sen Việt, dành cho bữa ăn và không gian sống đương đại.</p>
+        </div>
+        <div class="shopTools"><input id="searchInput" type="search" placeholder="Tìm sản phẩm..."
+            oninput="renderShop()"><select id="filterCategory" onchange="renderShop()">
+            <option value="">Tất cả danh mục</option>
+            <option value="Bát">Bát</option>
+            <option value="Đĩa">Đĩa</option>
+            <option value="Trà & phụ kiện">Trà & phụ kiện</option>
+            <option value="Bộ sản phẩm">Bộ sản phẩm</option>
+          </select><select id="filterSort" onchange="renderShop()">
+            <option value="">Sắp xếp mặc định</option>
+            <option value="low">Giá thấp đến cao</option>
+            <option value="high">Giá cao đến thấp</option>
+            <option value="name">Tên A–Z</option>
+          </select></div>
+        <div class="shopGrid" id="shopGrid"></div>
+      </div>
+    </section>
+    <section class="page" id="collection">
+      <div class="container">
+        <div class="pageTitle catalogPageTitle">
+          <div class="kicker">BỘ SƯU TẬP 01 / SEN VIỆT</div>
+          <h1>Gốm cho từng<br>khoảnh khắc.</h1>
+          <p class="muted">Khám phá từng món gốm, xem giá bán lẻ hoặc chọn trọn bộ với mức giá ưu đãi.</p>
+          <nav class="catalogJump" aria-label="Chuyển nhanh đến nhóm sản phẩm">
+            <button onclick="openCollectionSection('dining')">Bát &amp; đĩa <span>↓</span></button>
+            <button onclick="openCollectionSection('tea')">Ấm, chén &amp; bình hoa <span>↓</span></button>
+          </nav>
+        </div>
+        <section class="catalogSection" id="diningSection" aria-labelledby="diningHeading">
+          <div class="catalogSectionTop">
+            <div class="catalogHeading">
+              <div class="kicker">01 / BÀN ĂN SEN VIỆT</div>
+              <h2 id="diningHeading">Bát &amp; đĩa.</h2>
+              <p>Những thiết kế dành cho bữa cơm Việt, từ bát cơm, bát canh đến đĩa và thố đựng món ăn.</p>
+            </div>
+            <div class="catalogComboSummary">
+              <div class="kicker">COMBO BÀN ĂN · 7 MÓN</div>
+              <strong>3.190.000đ</strong>
+              <span>Giá mua lẻ: <s>3.530.000đ</s></span>
+              <p>4 bát cơm + 1 bát canh nhỏ + 1 đĩa lớn + 1 đĩa nhỏ.</p>
+              <button class="button" onclick="showProduct('comboBan')">XEM CHI TIẾT COMBO ↗</button>
+            </div>
+          </div>
+          <div class="shopGrid catalogGrid" id="diningGrid"></div>
+        </section>
+        <section class="catalogSection catalogTeaSection" id="teaSection" aria-labelledby="teaHeading">
+          <div class="catalogSectionTop">
+            <div class="catalogHeading">
+              <div class="kicker">02 / TRÀ CHIỀU SEN VIỆT</div>
+              <h2 id="teaHeading">Ấm, chén &amp;<br>bình hoa.</h2>
+              <p>Một góc thưởng trà thanh nhã, cùng những món gốm trang trí mang sắc sen dịu dàng.</p>
+            </div>
+            <div class="catalogComboSummary">
+              <div class="kicker">COMBO TRÀ CHIỀU · 7 MÓN</div>
+              <strong>2.990.000đ</strong>
+              <span>Giá mua lẻ: <s>3.330.000đ</s></span>
+              <p>1 ấm trà 600 ml + 6 chén trà 100 ml. Bình hoa được bán riêng.</p>
+              <button class="button" onclick="showProduct('comboTra')">XEM CHI TIẾT COMBO ↗</button>
+            </div>
+          </div>
+          <div class="shopGrid catalogGrid" id="teaGrid"></div>
+        </section>
+      </div>
+    </section>
+    <section class="page" id="wishlist">
+      <div class="container">
+        <div class="pageTitle">
+          <div class="kicker">LAM / ĐÃ LƯU</div>
+          <h1>Yêu thích.</h1>
+        </div>
+        <div class="shopGrid" id="wishlistGrid"></div>
+      </div>
+    </section>
+    <section class="page" id="care">
+      <div class="container">
+        <div class="pageTitle">
+          <div class="kicker">LAM / JOURNAL</div>
+          <h1>Chăm sóc gốm.</h1>
+          <p class="muted">Một vài lưu ý nhỏ để những món gốm đồng hành lâu dài cùng bạn.</p>
+        </div>
+        <div class="infoGrid sectionSpace">
+          <div>
+            <h3>Vệ sinh nhẹ nhàng</h3>
+            <p>Sử dụng khăn mềm, nước ấm và nước rửa chén dịu nhẹ. Tránh miếng cọ kim loại hoặc chất tẩy mài mòn có thể
+              làm xước bề mặt men.</p>
+            <h3>Tránh sốc nhiệt</h3>
+            <p>Không chuyển sản phẩm đột ngột từ rất lạnh sang rất nóng. Tránh va đập mạnh khi sử dụng và cất giữ.</p>
+          </div>
+          <div>
+            <h3>Lưu ý sử dụng</h3>
+            <p>Chưa có thông tin xác nhận sản phẩm phù hợp với lò vi sóng hoặc máy rửa bát, vì vậy nên rửa bằng tay và
+              không tự ý sử dụng trong các thiết bị này.</p><button class="pill" onclick="navigate('shop')">Khám phá sản
+              phẩm →</button>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="page" id="builder">
+      <div class="container">
+        <div class="pageTitle">
+          <div class="kicker">TRẢI NGHIỆM TƯƠNG TÁC</div>
+          <h1>Phối bộ bàn ăn 2D.</h1>
+          <p class="muted">Chọn các món gốm, kéo thả trên mặt bàn và thêm cả bộ vào giỏ hàng. Đây là trải nghiệm phối bộ
+            2D, không phải AR.</p>
+        </div>
+        <div class="builderLayout">
+          <div class="tableSurface" id="tableSurface"></div>
+          <aside>
+            <h3 style="margin:0">Chọn món gốm</h3>
+            <p class="muted">Nhấn để thêm, kéo để di chuyển.</p>
+            <div class="builderChoices" id="builderChoices"></div>
+            <div class="between" style="margin:20px 0"><b>Tổng bộ phối</b><b id="builderTotal">0đ</b></div><button
+              class="button full" onclick="builderToCart()">THÊM CẢ BỘ VÀO GIỎ</button><button class="button light full"
+              style="margin-top:9px" onclick="builder=[];renderBuilder()">XÓA BỐ CỤC</button>
+          </aside>
+        </div>
+      </div>
+    </section>
+    <section class="page" id="showroom">
+      <div class="container">
+        <div class="vrIntro">
+          <div class="pageTitle">
+            <div class="kicker">LAM / TRẢI NGHIỆM KHÔNG GIAN</div>
+            <h1>Showroom 360°.</h1>
+            <p class="muted">Một vòng khám phá gốm Việt, trong không gian đương đại tối giản.</p>
+          </div>
+          <p class="vrIntroNote">Tông kem ấm, sắc xanh olive và ánh sáng dịu. Các sản phẩm gốm được trưng bày trên kệ gỗ và bục trưng bày, lấy cảm hứng từ bộ sưu tập Sen Việt.</p>
+        </div>
+        <div class="vrTourBar" aria-label="Chọn khu vực showroom">
+          <div class="vrTourBrand"><strong>Tham quan LAM</strong><small>04 GÓC NHÌN / 15 SẢN PHẨM</small></div>
+          <button class="vrSceneButton isActive" data-vr-yaw="0" onclick="lamVrLookAt(0)">01 · Nổi bật<span>Hai bộ combo</span></button>
+          <button class="vrSceneButton" data-vr-yaw="90" onclick="lamVrLookAt(90)">02 · Bát gốm<span>4 thiết kế</span></button>
+          <button class="vrSceneButton" data-vr-yaw="180" onclick="lamVrLookAt(180)">03 · Trà & gốm<span>4 thiết kế</span></button>
+          <button class="vrSceneButton" data-vr-yaw="-90" onclick="lamVrLookAt(-90)">04 · Đĩa gốm<span>5 thiết kế</span></button>
+        </div>
+        <div class="vrStage" id="lamVrStage" tabindex="0" aria-label="Showroom 360 độ. Kéo để xoay, cuộn để phóng to, nhấn dấu cộng để xem sản phẩm.">
+          <div class="vrCube" id="lamVrCube" aria-hidden="true"><div class="vrCubeFace" data-vr-face="front"><img src="images/vr-front.jpg?v=2" alt="" draggable="false"></div><div class="vrCubeFace" data-vr-face="right"><img src="images/vr-right.jpg?v=2" alt="" draggable="false"></div><div class="vrCubeFace" data-vr-face="back"><img src="images/vr-back.jpg?v=2" alt="" draggable="false"></div><div class="vrCubeFace" data-vr-face="left"><img src="images/vr-left.jpg?v=2" alt="" draggable="false"></div><div class="vrCubeFace" data-vr-face="top"><img src="images/vr-top.jpg" alt="" draggable="false"></div><div class="vrCubeFace" data-vr-face="bottom"><img src="images/vr-bottom.jpg" alt="" draggable="false"></div></div>
+          <div class="vrLoading" id="lamVrLoading">Đang chuẩn bị không gian 360°…</div>
+          <div class="vrHotspots" id="lamVrHotspots" aria-label="Điểm tương tác sản phẩm"></div>
+          <div class="vrTop">
+            <div class="vrTopLabel"><span>LAM · VIRTUAL GALLERY</span><strong>Sen Việt Collection</strong></div>
+            <div class="vrTopRight">KHÔNG GIAN MÔ PHỎNG 360°</div>
+          </div>
+          <div class="vrBottom">
+            <div class="vrHelp"><strong>↔ Kéo để nhìn quanh</strong><br>Cuộn để thu phóng · Nhấn <b>+</b> để xem giá & sản phẩm</div>
+            <div class="vrControls">
+              <button class="vrControl" title="Quay sang trái" aria-label="Quay trái" onclick="lamVrTurn(-28)">←</button>
+              <button class="vrControl" title="Quay sang phải" aria-label="Quay phải" onclick="lamVrTurn(28)">→</button>
+              <button class="vrControl" title="Thu nhỏ" aria-label="Thu nhỏ" onclick="lamVrZoom(9)">−</button>
+              <button class="vrControl" title="Phóng to" aria-label="Phóng to" onclick="lamVrZoom(-9)">+</button>
+              <button class="vrControl" id="lamVrAutoButton" title="Tự xoay" onclick="lamVrToggleAuto()">TỰ XOAY</button>
+              <button class="vrControl" title="Toàn màn hình" aria-label="Toàn màn hình" onclick="lamVrFullscreen()">⛶</button>
+            </div>
+          </div>
+        </div>
+        <div class="vrBelow">
+          <div><div class="kicker">GỐM VIỆT / MỘT GÓC NHÌN MỚI</div><h3>Khám phá theo cách của bạn.</h3><p>Xoay góc nhìn để ngắm những chiếc bát, đĩa, ấm và chén được đặt trên kệ gỗ ở bốn phía phòng trưng bày. Chạm vào dấu <b>+</b> trên mỗi tác phẩm để xem tên, giá, thông tin và thêm sản phẩm vào giỏ hàng.</p></div>
+          <aside><strong>VỀ TRẢI NGHIỆM 360°</strong><p>Đây là showroom 360° mô phỏng các sản phẩm đặt trên kệ bằng ảnh tách nền, chưa phải mô hình gốm 3D có thể xoay từng món. Bạn có thể xoay toàn cảnh và tương tác với từng sản phẩm trên máy tính hoặc điện thoại.</p></aside>
+        </div>
+      </div>
+    </section>
+    <section class="page" id="checkout">
+      <div class="container">
+        <div class="pageTitle">
+          <div class="kicker">LAM / THANH TOÁN</div>
+          <h1>Đặt hàng.</h1>
+          <p class="muted">Website mô phỏng cho bài tập. Không có giao dịch hay chuyển khoản thật.</p>
+        </div>
+        <div class="checkoutGrid">
+          <form id="checkoutForm" onsubmit="placeOrder(event)">
+            <div class="formRow"><label class="field">Họ và tên<input name="name" required
+                  placeholder="Nguyễn Văn A"></label><label class="field">Số điện thoại<input name="phone" required
+                  pattern="[0-9+ ]{9,15}" placeholder="09xxxxxxxx"></label></div><label class="field">Địa chỉ giao
+              hàng<input name="address" required placeholder="Số nhà, đường, phường/xã, tỉnh/thành phố"></label><label
+              class="field">Ghi chú<textarea name="note" rows="3"
+                placeholder="Ghi chú thêm (nếu có)"></textarea></label><label class="field">Thanh toán<select
+                name="payment">
+                <option>Thanh toán khi nhận hàng (COD) - mô phỏng</option>
+                <option>Chuyển khoản ngân hàng - mô phỏng, không chuyển tiền</option>
+              </select></label><label style="display:flex;gap:9px;align-items:center;margin:15px 0"><input
+                type="checkbox" id="giftWrap" onchange="renderCheckout()"> Gói quà LAM Signature
+              (+99.000đ)</label><label class="field">Lời nhắn tặng quà<textarea id="giftNote" rows="2"
+                placeholder="Lời nhắn (không bắt buộc)"></textarea></label><button class="button full" type="submit">XÁC
+              NHẬN ĐƠN HÀNG MÔ PHỎNG</button>
+          </form>
+          <aside class="orderSummary">
+            <h3>Đơn hàng của bạn</h3>
+            <div id="checkoutItems"></div>
+            <div class="between"><span>Tạm tính</span><b id="checkoutSubtotal">0đ</b></div>
+            <div class="between"><span>Vận chuyển</span><span id="checkoutShipping">0đ</span></div>
+            <div class="between"><span>Gói quà</span><span id="checkoutGift">0đ</span></div>
+            <div class="between" style="font-size:18px"><b>Tổng cộng</b><b id="checkoutTotal">0đ</b></div>
+          </aside>
+        </div>
+      </div>
+    </section>
+    <section class="page" id="orders">
+      <div class="container">
+        <div class="pageTitle">
+          <div class="kicker">LAM / ĐƠN HÀNG</div>
+          <h1>Đơn hàng của bạn.</h1>
+          <p class="muted">Đơn mô phỏng chỉ lưu trên trình duyệt hiện tại.</p>
+        </div>
+        <div class="sectionSpace" id="ordersList"></div>
+      </div>
+    </section>
+  </main>
+  <div class="footerWave"><svg viewBox="0 0 1440 100" preserveAspectRatio="none">
+      <path d="M0 68C220 10 435 110 720 72C1005 34 1190-5 1440 16V100H0Z" fill="#303b21" />
+    </svg></div>
+  <footer><svg class="footerFloral" width="270" height="270" viewBox="0 0 270 270" aria-hidden="true">
+      <g fill="none" stroke="#e4cfb3" stroke-width="2">
+        <path
+          d="M135 270Q132 190 135 115M135 180Q30 170 10 90Q95 80 135 180M135 210Q250 135 265 160Q230 230 135 210M135 115Q90 65 135 5Q190 70 135 115M135 115Q45 80 35 20Q115 32 135 115M135 115Q225 80 235 20Q155 30 135 115" />
+      </g>
+    </svg>
+    <div class="footerGrid">
+      <div>
+        <div class="footerBrand">
+  <img src="images/logo-light.png" alt="LAM Logo" style="width:300px;height:auto;display:block;">
+</div>
+        <p>Gốm Việt đương đại, tiếp nối tinh hoa từ làng nghề truyền thống Việt Nam.</p>
+      </div>
+      <div class="footerCol">
+        <h4>Mua sắm</h4><button onclick="navigate('shop')">Sản phẩm</button><button onclick="openCollectionSection('dining')">Bát &amp; đĩa Sen Việt</button><button onclick="navigate('builder')">Phối bàn ăn</button><button
+          onclick="navigate('wishlist')">Yêu thích</button>
+      </div>
+      <div class="footerCol">
+        <h4>Về chúng tôi</h4><button onclick="goHomeSection('homeAbout')">Câu chuyện</button><button
+          onclick="navigate('care')">Bảo quản gốm</button><button onclick="navigate('showroom')">Showroom 360°</button>
+      </div>
+      <div class="footerCol">
+        <h4>Hỗ trợ</h4><button onclick="goHomeSection('homeAbout')">Chính sách</button><button onclick="navigate('orders')">Tra
+          đơn hàng</button><button onclick="navigate('care')">FAQ</button><button onclick="goHomeSection('homeAbout')">Liên
+          hệ</button>
+      </div>
+      
+<div class="footerQuote">
+  <span class="quoteTitle">Gốm Việt,</span>
+  <span class="quoteText">cho những điều thân quen thêm dịu dàng.</span>
+</div>
+    </div>
+    <div class="footerBottom"><span>Copyright © 2026 LAM.</span><span>Mọi khúc mắc xin liên hệ: 0968 208
+        521</span></div>
+  </footer>
+  <div class="scrim" id="scrim" onclick="closePanels()"></div>
+  <aside class="drawer" id="cartDrawer">
+    <div class="drawerHeader">
+      <h3>Giỏ hàng</h3><button class="close" onclick="closePanels()" aria-label="Đóng">×</button>
+    </div>
+    <div class="drawerBody" id="cartLines"></div>
+    <div class="drawerFoot">
+      <div class="between" style="margin-bottom:15px"><b>Tạm tính</b><b id="cartSubtotal">0đ</b></div><button
+        class="button full" onclick="closePanels();navigate('checkout')">TIẾN HÀNH THANH TOÁN →</button>
+    </div>
+  </aside>
+  <div class="modal" id="productModal">
+    <div class="imageSlot modalMedia" id="modalMedia"><img alt="Ảnh sản phẩm" />
+      <div class="imageFallback"><svg viewBox="0 0 24 24">
+          <rect x="2" y="4" width="20" height="16" rx="2" />
+          <circle cx="8" cy="9" r="2" />
+          <path d="m3 17 6-6 4 4 3-3 5 5" />
+        </svg><strong>ẢNH SẢN PHẨM</strong><small>700 × 700 px · PNG trong suốt</small></div><button class="uploadHit"
+        id="modalUpload" aria-label="Thêm ảnh sản phẩm"></button>
+    </div>
+    <div class="modalInfo"><button class="close" onclick="closePanels()">×</button>
+      <div class="kicker">LAM / SEN VIỆT</div>
+      <h2 id="modalName"></h2>
+      <div class="muted" id="modalDesc"></div>
+      <div class="price" id="modalPrice"></div>
+      <p id="modalIntro"></p>
+      <div class="detailRow"><span>Kích thước / dung tích</span><span id="modalSize"></span></div>
+      <div class="detailRow"><span>Chất liệu</span><span>Gốm tráng men</span></div>
+      <div class="detailRow"><span>Chăm sóc</span><span>Vệ sinh nhẹ nhàng</span></div><button class="button full"
+        id="modalAdd">THÊM VÀO GIỎ HÀNG →</button><button class="button light full"
+        onclick="toast('AR sẽ được kích hoạt khi có mô hình 3D GLB/USDZ.')">TRẢI NGHIỆM BẰNG AR · SẮP RA MẮT</button>
+      <p class="muted" style="font-size:11px;margin-top:13px">AR chưa hoạt động khi chưa có mô hình 3D.</p>
+    </div>
+  </div>
+  <div class="toast" id="toast"></div>
+  <button class="editToggle" id="editToggle" onclick="toggleEditor()">✎ Thêm ảnh</button>
+  <div class="editorBar" id="editorBar">
+    <h4>Chỉnh sửa hình ảnh</h4>
+    <p>Nhấn vào từng vùng ảnh trên website để chọn ảnh PNG/JPG từ máy. Ảnh được xem thử ngay trong đúng khung thiết kế.
+    </p><button class="button full" onclick="exportHTML()">↓ TẢI HTML ĐÃ GẮN ẢNH</button><button
+      class="button light full" onclick="toggleEditor()">XONG / TẮT CHỈNH SỬA</button><small>Quan trọng: Sau khi thêm
+      ảnh, hãy tải bản HTML mới để lưu ảnh vĩnh viễn. Chỉ xem thử mà chưa tải sẽ không lưu khi đóng trang.</small>
+  </div>
+  <input id="imageInput" type="file" accept="image/png,image/jpeg,image/webp" style="display:none"
+    onchange="handleImageFile(event)">
+  <script>
+    'use strict';
+    // File names for manual image replacement. You can also use the on-page image editor.
+    const IMAGE_FILES = {hero: 'images/hero.png', lotus: 'images/hoa-sen.png', bat01: 'images/bat-com.png', bat02: 'images/bat-canh-lon.png', bat03: 'images/bat-canh-nho.png', bat04: 'images/bat-nuoc-cham.png', dia01: 'images/dia-lon.png', dia02: 'images/dia-vua.png', dia03: 'images/dia-nho.png', dia04: 'images/dia-hoa-lon.png', dia05: 'images/dia-hoa-nho.png', am01: 'images/am-tra.png', chen01: 'images/chen-tra.png', binh01: 'images/binh-hoa.png', tho01: 'images/tho-canh.png', comboBan: 'images/combo-bat.png', comboTra: 'images/combo-amtra.png'};
+    const PRODUCTS = [
+      {id: 'bat01', name: 'Bát 01', desc: 'Bát cơm', cat: 'Bát', price: 300000, size: 'Ø 11 cm'},
+      {id: 'bat02', name: 'Bát 02', desc: 'Bát canh lớn', cat: 'Bát', price: 890000, size: 'Ø 18 cm'},
+      {id: 'bat03', name: 'Bát 03', desc: 'Bát canh nhỏ', cat: 'Bát', price: 650000, size: 'Ø 14 cm'},
+      {id: 'bat04', name: 'Bát 04', desc: 'Bát nước chấm', cat: 'Bát', price: 250000, size: 'Ø 8 cm'},
+      {id: 'dia01', name: 'Đĩa 01', desc: 'Đĩa thức ăn lớn', cat: 'Đĩa', price: 1190000, size: 'Ø 36 cm'},
+      {id: 'dia02', name: 'Đĩa 02', desc: 'Đĩa thức ăn vừa', cat: 'Đĩa', price: 890000, size: 'Ø 28 cm'},
+      {id: 'dia03', name: 'Đĩa 03', desc: 'Đĩa thức ăn nhỏ', cat: 'Đĩa', price: 490000, size: 'Ø 16 cm'},
+      {id: 'dia04', name: 'Đĩa 04', desc: 'Đĩa hoa lớn', cat: 'Đĩa', price: 990000, size: 'Ø 24 cm'},
+      {id: 'dia05', name: 'Đĩa 05', desc: 'Đĩa hoa nhỏ', cat: 'Đĩa', price: 690000, size: 'Ø 18 cm'},
+      {id: 'am01', name: 'Ấm 01', desc: 'Ấm trà', cat: 'Trà & phụ kiện', price: 1590000, size: '600 ml'},
+      {id: 'chen01', name: 'Chén 01', desc: 'Chén trà', cat: 'Trà & phụ kiện', price: 290000, size: '100 ml'},
+      {id: 'binh01', name: 'Bình 01', desc: 'Bình hoa', cat: 'Trà & phụ kiện', price: 1790000, size: 'Cao 25 cm'},
+      {id: 'tho01', name: 'Thố 01', desc: 'Thố canh có nắp', cat: 'Trà & phụ kiện', price: 1390000, size: 'Ø 20 cm'},
+      {id: 'comboBan', name: 'Bộ Bàn Ăn 01', desc: 'Bộ bàn ăn 7 món', cat: 'Bộ sản phẩm', price: 3190000, size: '7 món'},
+      {id: 'comboTra', name: 'Bộ Trà 01', desc: 'Bộ trà 7 món', cat: 'Bộ sản phẩm', price: 2990000, size: '1 ấm · 6 chén'}
+    ];
+    const BUNDLES = {comboBan: [['dia01', 1], ['dia03', 1], ['bat03', 1], ['bat01', 4]], comboTra: [['am01', 1], ['chen01', 6]]};
+    const byId = id => PRODUCTS.find(p => p.id === id);
+    const money = n => Number(n).toLocaleString('vi-VN') + 'đ';
+    const safe = s => String(s || '').replace(/[&<>"']/g, c => ({'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'}[c]));
+    let imageData = {}; try {imageData = JSON.parse(document.getElementById('lam-image-data').textContent || '{}')} catch (e) {imageData = {}}
+    let cart = {}, wishlist = [], orders = []; try {cart = JSON.parse(localStorage.getItem('lam2_cart') || '{}'); wishlist = JSON.parse(localStorage.getItem('lam2_wish') || '[]'); orders = JSON.parse(localStorage.getItem('lam2_orders') || '[]')} catch (e) { }
+    let editor = false, selectedImage = '', builder = [], toastTimer;
+    function save() {try {localStorage.setItem('lam2_cart', JSON.stringify(cart)); localStorage.setItem('lam2_wish', JSON.stringify(wishlist)); localStorage.setItem('lam2_orders', JSON.stringify(orders))} catch (e) { } }
+    function toast(msg) {const el = document.getElementById('toast'); el.textContent = msg; el.style.display = 'block'; clearTimeout(toastTimer); toastTimer = setTimeout(() => el.style.display = 'none', 3000)}
+    function imageSlot(key, cls = '', size = '700 × 700 px', title = 'ẢNH SẢN PHẨM') {return `<div class="imageSlot ${cls}" data-image="${key}" data-size="${size}"><img alt="${title}"><div class="imageFallback"><svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><circle cx="8" cy="9" r="2"/><path d="m3 17 6-6 4 4 3-3 5 5"/></svg><strong>${title}</strong><small>${size}${key.startsWith('combo') ? ' · JPG/PNG' : key !== 'hero' && key !== 'lotus' ? ' · PNG trong suốt' : ''}</small></div><button class="uploadHit" aria-label="Chèn ảnh ${title}" onclick="event.stopPropagation();chooseImage('${key}')"></button></div>`}
+    function refreshImages() {document.querySelectorAll('.imageSlot[data-image]').forEach(slot => {let key = slot.dataset.image, im = slot.querySelector('img'); if (!im) return; let src = imageData[key] || IMAGE_FILES[key]; if (!src) {slot.classList.remove('hasImage'); return } if (im.getAttribute('src') === src && slot.classList.contains('hasImage')) return; im.onload = () => slot.classList.add('hasImage'); im.onerror = () => slot.classList.remove('hasImage'); im.src = src})}
+    function homeProduct(p) {return `<article class="cutProduct" onclick="if(!editor)showProduct('${p.id}')">${imageSlot(p.id, 'productImage', '700 × 700 px', p.name)}<div class="productName">${p.name}</div><div class="productSpec">${p.desc} · ${p.size}</div></article>`}
+    function shopProduct(p) {return `<article class="shopCard" onclick="if(!editor)showProduct('${p.id}')"><div style="position:relative">${imageSlot(p.id, 'shopPhoto', p.id.startsWith('combo') ? '900 × 650 px' : '700 × 700 px', p.name)}<button class="wishHeart ${wishlist.includes(p.id) ? 'saved' : ''}" onclick="event.stopPropagation();toggleWish('${p.id}')" aria-label="Yêu thích">${wishlist.includes(p.id) ? '♥' : '♡'}</button></div><h3>${p.name}</h3><div class="muted">${p.desc} · ${p.size}</div><div class="price">${money(p.price)}</div></article>`}
+    function renderHome() {document.getElementById('homeComboBanMedia').innerHTML = imageSlot('comboBan', 'homeBundlePhoto', '1200 × 850 px', 'ẢNH BỘ BÀN ĂN'); document.getElementById('homeComboTraMedia').innerHTML = imageSlot('comboTra', 'homeBundlePhoto', '1200 × 850 px', 'ẢNH BỘ TRÀ CHIỀU'); document.getElementById('homeBowls').innerHTML = PRODUCTS.filter(p => p.cat === 'Bát').map(homeProduct).join(''); document.getElementById('homePlates').innerHTML = PRODUCTS.filter(p => p.cat === 'Đĩa').map(homeProduct).join(''); document.getElementById('homeDiscover').innerHTML = ['binh01', 'tho01'].map(id => {let p = byId(id); return `<article class="discoverCard" onclick="if(!editor)showProduct('${id}')">${imageSlot(id, 'discoverImage', '700 × 700 px', p.name)}<div class="cardTitle">${p.name}</div><div class="cardSpec">${p.desc}</div></article>`}).join(''); refreshImages()}
+    function renderShop() {let q = (document.getElementById('searchInput').value || '').trim().toLowerCase(), cat = document.getElementById('filterCategory').value, sort = document.getElementById('filterSort').value; let list = PRODUCTS.filter(p => (!cat || p.cat === cat) && (`${p.name} ${p.desc} ${p.size}`).toLowerCase().includes(q)); if (sort === 'low') list.sort((a, b) => a.price - b.price); if (sort === 'high') list.sort((a, b) => b.price - a.price); if (sort === 'name') list.sort((a, b) => a.name.localeCompare(b.name, 'vi')); document.getElementById('shopGrid').innerHTML = list.length ? list.map(shopProduct).join('') : '<div class="empty">Không tìm thấy sản phẩm phù hợp.</div>'; refreshImages()}
+    function renderCollection() {const diningIds = ['bat01','bat02','bat03','bat04','dia01','dia02','dia03','dia04','dia05','tho01']; const teaIds = ['am01','chen01','binh01']; document.getElementById('diningGrid').innerHTML = diningIds.map(id => shopProduct(byId(id))).join(''); document.getElementById('teaGrid').innerHTML = teaIds.map(id => shopProduct(byId(id))).join(''); refreshImages()}
+    function openCollectionSection(group) {navigate('collection'); const targetId = group === 'tea' ? 'teaSection' : 'diningSection'; requestAnimationFrame(() => requestAnimationFrame(() => document.getElementById(targetId).scrollIntoView({behavior:'smooth', block:'start'})))}
+    function goHomeSection(sectionId) {navigate('home'); requestAnimationFrame(() => requestAnimationFrame(() => document.getElementById(sectionId).scrollIntoView({behavior:'smooth', block:'start'})))}
+    function renderWishlist() {let list = PRODUCTS.filter(p => wishlist.includes(p.id)); document.getElementById('wishlistGrid').innerHTML = list.length ? list.map(shopProduct).join('') : '<div class="empty">Bạn chưa lưu sản phẩm nào. ♡</div>'; refreshImages()}
+    function toggleWish(id) {wishlist = wishlist.includes(id) ? wishlist.filter(x => x !== id) : [...wishlist, id]; save(); renderShop(); renderCollection(); renderWishlist(); toast(wishlist.includes(id) ? 'Đã thêm vào yêu thích' : 'Đã bỏ khỏi yêu thích')}
+    function navigate(id) {closePanels(); document.querySelectorAll('.page').forEach(el => el.classList.toggle('active', el.id === id)); document.getElementById('mobileMenu').classList.remove('open'); window.scrollTo(0, 0); if (id === 'shop') renderShop(); if (id === 'collection') renderCollection(); if (id === 'wishlist') renderWishlist(); if (id === 'checkout') renderCheckout(); if (id === 'orders') renderOrders(); if (id === 'builder') renderBuilder(); if (id === 'showroom') {initLamVR();} else {lamVrStopAuto();} updateHeader()}
+    function updateHeader() {document.body.classList.toggle('stickyHeader', !document.getElementById('home').classList.contains('active'))}
+    function showProduct(id) {let p = byId(id); if (!p) return; let media = document.getElementById('modalMedia'); media.dataset.image = id; media.querySelector('.imageFallback strong').textContent = p.name; document.getElementById('modalUpload').onclick = () => chooseImage(id); document.getElementById('modalName').textContent = p.name; document.getElementById('modalDesc').textContent = p.desc; document.getElementById('modalPrice').textContent = money(p.price); document.getElementById('modalSize').textContent = p.size; document.getElementById('modalIntro').textContent = id === 'comboBan' ? 'Gồm 1 đĩa lớn, 1 đĩa nhỏ, 1 bát canh nhỏ và 4 bát cơm. Giá mua lẻ 3.530.000đ.' : id === 'comboTra' ? 'Gồm 1 ấm trà và 6 chén trà. Giá mua lẻ 3.330.000đ.' : 'Thiết kế thuộc bộ sưu tập Sen Việt, lấy cảm hứng từ gốm Việt và nét đẹp tinh giản.'; document.getElementById('modalAdd').onclick = () => {addCart(id); closePanels(); openCart()}; document.getElementById('scrim').classList.add('show'); document.getElementById('productModal').classList.add('show'); refreshImages()}
+    function addCart(id, qty = 1) {cart[id] = (cart[id] || 0) + qty; save(); renderCart(); toast('Đã thêm sản phẩm vào giỏ hàng')}
+    function setQty(id, n) {if (n <= 0) delete cart[id]; else cart[id] = n; save(); renderCart(); renderCheckout()}
+    function cartSubtotal() {return Object.entries(cart).reduce((sum, [id, q]) => sum + (byId(id)?.price || 0) * q, 0)}
+    function renderCart() {document.getElementById('cartCount').textContent = Object.values(cart).reduce((a, b) => a + b, 0); document.getElementById('cartSubtotal').textContent = money(cartSubtotal()); document.getElementById('cartLines').innerHTML = Object.entries(cart).length ? Object.entries(cart).map(([id, q]) => {let p = byId(id); if (!p) return ''; return `<div class="cartItem">${imageSlot(id, 'cartThumb', '700 × 700 px', p.name)}<div><h4>${p.name}</h4><div class="muted">${p.desc}</div><b>${money(p.price)}</b><div class="quantity"><button onclick="setQty('${id}',${q - 1})">−</button><span>${q}</span><button onclick="setQty('${id}',${q + 1})">+</button></div></div><button class="close" style="font-size:21px" onclick="setQty('${id}',0)">×</button></div>`}).join('') : '<div class="empty">Giỏ hàng đang trống.</div>'; refreshImages()}
+    function openCart() {renderCart(); document.getElementById('scrim').classList.add('show'); document.getElementById('cartDrawer').classList.add('show')}
+    function closePanels() {document.getElementById('scrim').classList.remove('show'); document.getElementById('cartDrawer').classList.remove('show'); document.getElementById('productModal').classList.remove('show')}
+    function renderCheckout() {let sub = cartSubtotal(), shipping = sub === 0 || sub >= 2000000 ? 0 : 45000, gift = document.getElementById('giftWrap').checked ? 99000 : 0; document.getElementById('checkoutItems').innerHTML = Object.entries(cart).map(([id, q]) => {let p = byId(id); return p ? `<div class="between"><span>${p.name} × ${q}</span><span>${money(p.price * q)}</span></div>` : ''}).join('') || '<p>Giỏ hàng đang trống.</p>'; document.getElementById('checkoutSubtotal').textContent = money(sub); document.getElementById('checkoutShipping').textContent = sub === 0 ? '—' : shipping ? money(shipping) : 'Miễn phí'; document.getElementById('checkoutGift').textContent = money(gift); document.getElementById('checkoutTotal').textContent = money(sub + shipping + gift)}
+    function placeOrder(ev) {ev.preventDefault(); if (!Object.keys(cart).length) {toast('Hãy thêm sản phẩm vào giỏ hàng trước.'); return } let form = new FormData(ev.target), sub = cartSubtotal(), gift = document.getElementById('giftWrap').checked; orders.unshift({id: 'LAM-' + Date.now().toString().slice(-8), date: new Date().toLocaleString('vi-VN'), name: form.get('name'), phone: form.get('phone'), address: form.get('address'), payment: form.get('payment'), items: {...cart}, total: sub + (sub >= 2000000 ? 0 : 45000) + (gift ? 99000 : 0), status: 'Đang chuẩn bị hàng'}); cart = {}; save(); ev.target.reset(); renderCart(); navigate('orders'); toast('Đã tạo đơn hàng mô phỏng!')}
+    function renderOrders() {document.getElementById('ordersList').innerHTML = orders.length ? orders.map(o => `<div class="orderBox"><div class="between"><b>${safe(o.id)}</b><span>${safe(o.date)}</span></div><h3 style="margin:15px 0 0">${safe(o.status)}</h3><p>Người nhận: ${safe(o.name)}<br>Phương thức: ${safe(o.payment)}<br>Tổng cộng: <b>${money(o.total)}</b></p><small>Đây là trạng thái mô phỏng, không phải đơn hàng thực tế.</small></div>`).join('') : '<div class="empty">Chưa có đơn hàng mô phỏng.</div>'}
+    function renderBuilder() {let choices = PRODUCTS.slice(0, 13); document.getElementById('builderChoices').innerHTML = choices.map(p => `<button onclick="builderAdd('${p.id}')">${p.name}<span>${money(p.price)}</span></button>`).join(''); let table = document.getElementById('tableSurface'); table.innerHTML = builder.map((item, i) => `<div class="tablePiece" data-index="${i}" style="left:${item.x}%;top:${item.y}%"><span>${byId(item.id).name}</span><button onclick="event.stopPropagation();builder.splice(${i},1);renderBuilder()">×</button></div>`).join(''); document.getElementById('builderTotal').textContent = money(builder.reduce((sum, it) => sum + byId(it.id).price, 0)); table.querySelectorAll('.tablePiece').forEach(el => el.addEventListener('pointerdown', ev => {if (ev.target.tagName === 'BUTTON') return; let i = Number(el.dataset.index); el.setPointerCapture(ev.pointerId); const move = e => {let r = table.getBoundingClientRect(), w = el.offsetWidth, h = el.offsetHeight; builder[i].x = Math.max(0, Math.min(100 - w / r.width * 100, (e.clientX - r.left - w / 2) / r.width * 100)); builder[i].y = Math.max(0, Math.min(100 - h / r.height * 100, (e.clientY - r.top - h / 2) / r.height * 100)); el.style.left = builder[i].x + '%'; el.style.top = builder[i].y + '%'}; el.addEventListener('pointermove', move); el.addEventListener('pointerup', () => el.removeEventListener('pointermove', move), {once: true})}))}
+    function builderAdd(id) {builder.push({id, x: 10 + Math.random() * 62, y: 8 + Math.random() * 62}); renderBuilder()}
+    function builderToCart() {if (!builder.length) {toast('Hãy chọn ít nhất một món gốm.'); return } builder.forEach(it => cart[it.id] = (cart[it.id] || 0) + 1); save(); openCart()}
+    // Image editor: choose photos in-browser, then export a new self-contained HTML.
+    function toggleEditor() {editor = !editor; document.body.classList.toggle('editing', editor); document.getElementById('editorBar').classList.toggle('show', editor); document.getElementById('editToggle').textContent = editor ? '✕ Đóng chỉnh ảnh' : '✎ Thêm ảnh'; if (editor) toast('Nhấn vào vùng ảnh để chọn tệp PNG hoặc JPG.')}
+    function chooseImage(key) {selectedImage = key; let input = document.getElementById('imageInput'); input.value = ''; input.click()}
+    async function handleImageFile(ev) {let file = ev.target.files && ev.target.files[0]; if (!file) return; if (!/^image\/(png|jpeg|webp)$/.test(file.type)) {toast('Chọn ảnh PNG, JPG hoặc WebP.'); return } try {let url = URL.createObjectURL(file), im = new Image(); im.src = url; await im.decode(); let max = selectedImage === 'hero' ? 2200 : selectedImage === 'lotus' ? 1500 : 1100, ratio = Math.min(1, max / Math.max(im.naturalWidth, im.naturalHeight)); let canvas = document.createElement('canvas'); canvas.width = Math.round(im.naturalWidth * ratio); canvas.height = Math.round(im.naturalHeight * ratio); canvas.getContext('2d').drawImage(im, 0, 0, canvas.width, canvas.height); let type = file.type === 'image/jpeg' ? 'image/jpeg' : 'image/png'; imageData[selectedImage] = canvas.toDataURL(type, .87); URL.revokeObjectURL(url); refreshImages(); toast('Đã chèn ảnh. Nhấn “TẢI HTML ĐÃ GẮN ẢNH” để lưu lại.')} catch (err) {toast('Không đọc được ảnh này. Hãy thử PNG hoặc JPG khác.')} }
+    function exportHTML() {let clone = document.documentElement.cloneNode(true); clone.dataset.published = '1'; clone.querySelector('#lam-image-data').textContent = JSON.stringify(imageData).replace(/</g, '\\u003c'); clone.querySelector('body').classList.remove('editing'); clone.querySelector('#editorBar').classList.remove('show'); clone.querySelector('#editToggle').textContent = '✎ Thêm ảnh'; clone.querySelectorAll('.imageSlot img').forEach(im => im.removeAttribute('src')); clone.querySelectorAll('.imageSlot').forEach(el => el.classList.remove('hasImage')); let html = '<!DOCTYPE html>\n' + clone.outerHTML; let blob = new Blob([html], {type: 'text/html;charset=utf-8'}), url = URL.createObjectURL(blob), a = document.createElement('a'); a.href = url; a.download = 'LAM_website_da_them_anh.html'; document.body.appendChild(a); a.click(); a.remove(); setTimeout(() => URL.revokeObjectURL(url), 2000); toast('Đã tải bản HTML kèm ảnh. Hãy mở tệp mới để kiểm tra.')}
+    function applyPublishedMode() {let published = document.documentElement.dataset.published === '1', allowEdit = new URLSearchParams(location.search).has('edit'); if (published && !allowEdit) document.getElementById('editToggle').style.display = 'none'}
+    document.addEventListener('keydown', ev => {if (ev.key === 'Escape') closePanels()});
+    renderHome(); renderShop(); renderCollection(); renderCart(); refreshImages(); applyPublishedMode();
+
+
+    // === LAM / showroom 360° panorama cubemap, no external library ===
+    const LAM_VR_HOTSPOTS = [{"id":"comboBan","yaw":-23.44,"pitch":-2.36},{"id":"comboTra","yaw":23.44,"pitch":-2.36},{"id":"bat01","yaw":66.18,"pitch":11.61},{"id":"bat02","yaw":113.54,"pitch":11.64},{"id":"bat03","yaw":66.09,"pitch":-6.42},{"id":"bat04","yaw":113.54,"pitch":-6.44},{"id":"am01","yaw":155.16,"pitch":12.98},{"id":"binh01","yaw":-155.9,"pitch":13.73},{"id":"chen01","yaw":155.62,"pitch":-6.39},{"id":"tho01","yaw":-155.9,"pitch":-5.2},{"id":"dia01","yaw":-121.36,"pitch":10.4},{"id":"dia02","yaw":-90.0,"pitch":12.13},{"id":"dia03","yaw":-58.81,"pitch":10.41},{"id":"dia04","yaw":-111.72,"pitch":-7.65},{"id":"dia05","yaw":-68.37,"pitch":-7.65}];
+    let lamVr = {initialized:false,ready:false,stage:null,cube:null,depth:600,yaw:0,pitch:0,fov:60,auto:false,raf:0,lastFrame:0,dragging:false,dragX:0,dragY:0,hotspots:[]};
+    function lamVrDeg(d) {return d*Math.PI/180}
+    function initLamVR() {
+      if(lamVr.initialized){lamVrResize();return}
+      const stage=document.getElementById('lamVrStage'),cube=document.getElementById('lamVrCube');if(!stage||!cube)return;
+      lamVr.initialized=true;lamVr.stage=stage;lamVr.cube=cube;if(window.innerWidth<=680)lamVr.yaw=lamVrDeg(-25.64);
+      const layer=document.getElementById('lamVrHotspots');
+      LAM_VR_HOTSPOTS.forEach(h=>{const p=byId(h.id);if(!p)return;const b=document.createElement('button');b.type='button';b.className='vrHotspot';b.setAttribute('aria-label','Xem '+p.name+' '+money(p.price));b.innerHTML='+<span class="vrTooltip"><strong>'+safe(p.name)+'</strong><small>'+money(p.price)+' · Xem chi tiết ↗</small></span>';b.onclick=(ev)=>{ev.stopPropagation();lamVrStopAuto();showProduct(h.id)};layer.appendChild(b);lamVr.hotspots.push({...h,el:b})});
+      const imgs=[...cube.querySelectorAll('img')];Promise.all(imgs.map(img=>new Promise(resolve=>{if(img.complete){resolve(img.naturalWidth>0);return}img.onload=()=>resolve(true);img.onerror=()=>resolve(false)}))).then(ok=>{if(ok.every(Boolean)){lamVr.ready=true;document.getElementById('lamVrLoading').style.display='none';lamVrResize()}else{document.getElementById('lamVrLoading').textContent='Không tìm thấy ảnh showroom. Hãy giữ nguyên thư mục images khi mở website.'}});
+      stage.addEventListener('pointerdown',e=>{if(e.target.closest('button'))return;lamVrStopAuto();lamVr.dragging=true;lamVr.dragX=e.clientX;lamVr.dragY=e.clientY;stage.classList.add('isDragging');stage.setPointerCapture(e.pointerId)});
+      stage.addEventListener('pointermove',e=>{if(!lamVr.dragging)return;const dx=e.clientX-lamVr.dragX,dy=e.clientY-lamVr.dragY;lamVr.dragX=e.clientX;lamVr.dragY=e.clientY;lamVr.yaw-=dx*.0052;lamVr.pitch=Math.max(-1.15,Math.min(1.15,lamVr.pitch+dy*.004));lamVrDraw()});
+      const release=()=>{lamVr.dragging=false;stage.classList.remove('isDragging')};stage.addEventListener('pointerup',release);stage.addEventListener('pointercancel',release);stage.addEventListener('lostpointercapture',release);
+      stage.addEventListener('wheel',e=>{e.preventDefault();lamVrZoom(e.deltaY>0?5:-5)},{passive:false});
+      stage.addEventListener('keydown',e=>{if(['ArrowLeft','ArrowRight','ArrowUp','ArrowDown','+','-'].includes(e.key)){e.preventDefault();if(e.key==='ArrowLeft')lamVrTurn(-15);if(e.key==='ArrowRight')lamVrTurn(15);if(e.key==='ArrowUp')lamVr.pitch=Math.max(-1.15,lamVr.pitch-.13);if(e.key==='ArrowDown')lamVr.pitch=Math.min(1.15,lamVr.pitch+.13);if(e.key==='+')lamVrZoom(-6);if(e.key==='-')lamVrZoom(6);lamVrDraw()}});
+      window.addEventListener('resize',()=>{if(document.getElementById('showroom').classList.contains('active'))lamVrResize()});
+      document.addEventListener('fullscreenchange',()=>{if(lamVr.ready)requestAnimationFrame(()=>lamVrResize())});
+      lamVrResize();
+    }
+    function lamVrResize(){if(!lamVr.cube||!lamVr.stage)return;const rect=lamVr.stage.getBoundingClientRect();const d=Math.max(100,rect.height/(2*Math.tan(lamVrDeg(lamVr.fov)/2)));lamVr.depth=d;lamVr.stage.style.perspective=d+'px';lamVr.cube.style.width=lamVr.cube.style.height=(2*d)+'px';lamVr.cube.style.setProperty('--vr-depth',d+'px');lamVrDraw()}
+    function lamVrDraw(){if(!lamVr.cube)return;const d=lamVr.depth;lamVr.cube.style.transform='translate(-50%, -50%) translateZ('+d+'px) rotateX('+lamVr.pitch+'rad) rotateY('+lamVr.yaw+'rad)';lamVrUpdateHotspots()}
+    function lamVrUpdateHotspots(){if(!lamVr.stage)return;const w=lamVr.stage.clientWidth,h=lamVr.stage.clientHeight,aspect=w/h,t=Math.tan(lamVrDeg(lamVr.fov)/2),cy=Math.cos(lamVr.yaw),sy=Math.sin(lamVr.yaw),cp=Math.cos(lamVr.pitch),sp=Math.sin(lamVr.pitch);lamVr.hotspots.forEach(p=>{const a=lamVrDeg(p.yaw),b=lamVrDeg(p.pitch),x=Math.sin(a)*Math.cos(b),y=Math.sin(b),z=-Math.cos(a)*Math.cos(b);const x1=x*cy+z*sy,z1=-x*sy+z*cy,y2=y*cp+z1*sp,z2=-y*sp+z1*cp;if(z2>=-.01){p.el.style.display='none';return}const sx=(.5+.5*x1/(-z2)/(aspect*t))*w,sz=(.5-.5*y2/(-z2)/t)*h;const show=sx>24&&sx<w-24&&sz>24&&sz<h-24;p.el.style.display=show?'grid':'none';if(show){p.el.style.left=sx+'px';p.el.style.top=sz+'px'}})}
+    function lamVrLookAt(deg){lamVrStopAuto();lamVr.yaw=lamVrDeg(deg===0&&window.innerWidth<=680?-25.64:deg);lamVr.pitch=0;lamVrDraw();document.querySelectorAll('.vrSceneButton').forEach(b=>b.classList.toggle('isActive',Number(b.dataset.vrYaw)===deg))}
+    function lamVrTurn(deg){lamVrStopAuto();lamVr.yaw+=lamVrDeg(deg);lamVrDraw()}
+    function lamVrZoom(delta){lamVr.fov=Math.max(42,Math.min(84,lamVr.fov+delta));lamVrResize()}
+    function lamVrStopAuto(){lamVr.auto=false;cancelAnimationFrame(lamVr.raf);const b=document.getElementById('lamVrAutoButton');if(b){b.classList.remove('isActive');b.textContent='TỰ XOAY'}}
+    function lamVrToggleAuto(){lamVr.auto=!lamVr.auto;const b=document.getElementById('lamVrAutoButton');b.classList.toggle('isActive',lamVr.auto);b.textContent=lamVr.auto?'DỪNG XOAY':'TỰ XOAY';lamVr.lastFrame=performance.now();if(lamVr.auto)lamVrAnimate(lamVr.lastFrame)}
+    function lamVrAnimate(now){if(!lamVr.auto||!document.getElementById('showroom').classList.contains('active'))return;const dt=Math.min(now-lamVr.lastFrame,60);lamVr.lastFrame=now;lamVr.yaw+=dt*.00011;lamVrDraw();lamVr.raf=requestAnimationFrame(lamVrAnimate)}
+    function lamVrFullscreen(){const el=document.getElementById('lamVrStage');if(document.fullscreenElement)document.exitFullscreen();else if(el.requestFullscreen)el.requestFullscreen()}
+    if(location.hash==='#showroom')navigate('showroom');
+  </script>
+</body>
+
+</html>
